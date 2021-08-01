@@ -3,13 +3,14 @@ import time
 
 
 class pdc:
-    SERVER = socket.gethostbyname(socket.gethostname())
+    SERVER = "10.64.37.35"
     PORT = 2345
     SERVER_ADDR = (SERVER, PORT)
     BUFFER = 1024
     server = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
     
     def start_server(self):
+        print(self.SERVER_ADDR)
         self.server.bind(self.SERVER_ADDR)
         print("[SERVER STARTING]")
         msg, cl_addr = self.server.recvfrom(self.BUFFER)
