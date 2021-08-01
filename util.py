@@ -35,7 +35,7 @@ class pdc:
     def msg_unpack(self,msg):
         data_recv = struct.unpack('!HHHIIIHIHHHHIIIHH',msg)
         return data_recv
-        #1234
+        #12345678
         '''
         print("SYNC is " + str(data_recv[0]))
         print("FRAME size is " + str(data_recv[1]))
