@@ -34,7 +34,7 @@ def current_time():
         FRACSEC_SERVER = int((CT - SOC_SERVER)*10**6)
         #print("Time is " + str(CT))
         #print("SOC Server in seconds is " + str(SOC_SERVER) + 
-              "\nFRACSEC in useconds is " + str(FRACSEC_SERVER))
+               #"\nFRACSEC in useconds is " + str(FRACSEC_SERVER))
         return SOC_SERVER, FRACSEC_SERVER
 
 i = 20
