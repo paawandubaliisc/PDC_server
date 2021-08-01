@@ -14,7 +14,6 @@ class pdc:
         print(self.SERVER_ADDR)
         self.server.bind(self.SERVER_ADDR)
         print("[SERVER STARTING]")
-        i = 0
         while True:
             msg, cl_addr = self.server.recvfrom(self.BUFFER)
             self.msg_unpack(msg)
@@ -32,9 +31,12 @@ class pdc:
 
     def msg_unpack(self,msg):
         data_recv = struct.unpack('!HHHIIIHIHHHHIIIHH',msg)
-        print("SYNC is " + msg[0])
-        print("FRAME size is " + msg[1])
-        print("PMU ID is " + msg[2])
-        print("SOC_CLIENT is " + msg[3])
-        print("FRACSEC_CLIENT is " + msg[4])
+        #print(msg)
+        #SYNC = hex(msg[0:1])
+        #print(SYNC)
+        print("SYNC is " + str(data_recv[0]))
+        print("FRAME size is " + str(data_recv[1]))
+        print("PMU ID is " + str(data_recv[2]))
+        print("SOC_CLIENT is " + str(data_recv[3]))
+        print("FRACSEC_CLIENT is " + str(data_recv[4]))
 

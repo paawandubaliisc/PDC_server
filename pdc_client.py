@@ -47,10 +47,29 @@ while i > 0:
     #FRACSEC_CLIENT = FRACSEC_CLIENT * (10 ** 6)
     SOC_CLIENT = current_time()[0]
     FRACSEC_CLIENT = current_time()[1]
-    msg = struct.pack('!HHHIIIHIHHHHIIIHH', SYNC, FRAME_SIZE, ID_CODE , SOC_CLIENT, FRACSEC_CLIENT , TIME_BASE,
-                      NUM_PMU, ST_NAME, FORMAT, PHNMR, ANNMR, DGNMR, CHNAM, PHUNIT, ANUNIT, DIGUNIT, FNOM)
+    msg = struct.pack('!HHHIIIHIHHHHIIIHH', 
+                        SYNC, 
+                        FRAME_SIZE, 
+                        ID_CODE ,
+                        SOC_CLIENT,
+                        FRACSEC_CLIENT , 
+                        TIME_BASE,
+                        NUM_PMU, 
+                        ST_NAME, 
+                        FORMAT, 
+                        PHNMR, 
+                        ANNMR, 
+                        DGNMR, 
+                        CHNAM, 
+                        PHUNIT, 
+                        ANUNIT, 
+                        DIGUNIT, 
+                        FNOM)
     client.sendto(msg, SERVER_ADDR)
-    print(i)
-    print("\n")
+    print("SYNC is " + str(SYNC))
+    print("FRAME size is " + str(FRAME_SIZE))
+    print("PMU ID is " + str(ID_CODE))
+    print("SOC_CLIENT is " + str(SOC_CLIENT))
+    print("FRACSEC_CLIENT is " + str(FRACSEC_CLIENT))
     i = i - 1
 
