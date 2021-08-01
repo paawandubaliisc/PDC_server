@@ -3,7 +3,7 @@ import time
 import struct
 
 SERVER = "10.64.37.35"
-PORT = 2356
+PORT = 2345
 SERVER_ADDR = (SERVER, PORT)
 BUFFER = 1024
 client = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
@@ -31,9 +31,9 @@ FNOM = 0x0001
 def current_time():
         CT = time.time()
         SOC_SERVER = int(CT)
-        FRACSEC_SERVER = (CT - SOC_SERVER)*10**6
-        print("Time is " + str(CT))
-        print("SOC Server in seconds is " + str(SOC_SERVER) + 
+        FRACSEC_SERVER = int((CT - SOC_SERVER)*10**6)
+        #print("Time is " + str(CT))
+        #print("SOC Server in seconds is " + str(SOC_SERVER) + 
               "\nFRACSEC in useconds is " + str(FRACSEC_SERVER))
         return SOC_SERVER, FRACSEC_SERVER
 
@@ -50,5 +50,7 @@ while i > 0:
     msg = struct.pack('!HHHIIIHIHHHHIIIHH', SYNC, FRAME_SIZE, ID_CODE , SOC_CLIENT, FRACSEC_CLIENT , TIME_BASE,
                       NUM_PMU, ST_NAME, FORMAT, PHNMR, ANNMR, DGNMR, CHNAM, PHUNIT, ANUNIT, DIGUNIT, FNOM)
     client.sendto(msg, SERVER_ADDR)
+    print(i)
+    print("\n")
     i = i - 1
 
