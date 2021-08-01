@@ -8,3 +8,4 @@ class pdc:
     SERVER_ADDR = (SERVER, PORT)
     BUFFER = 1024
     server = socket.socket(socket.AF_INET, socket.SOCK.DGRAM)
+    #1234
