@@ -81,7 +81,7 @@ while i > 0:
                         DIGUNIT, 
                         FNOM)
     client.sendto(msg, SERVER_ADDR)
-    print("SYNC is " + str(SYNC))
+    print("SYNC is " + str(SYNC_CONFIG))
     print("FRAME size is " + str(FRAME_SIZE))
     print("PMU ID is " + str(ID_CODE))
     print("SOC_CLIENT is " + str(SOC_CLIENT))

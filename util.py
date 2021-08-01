@@ -17,8 +17,7 @@ class pdc:
         while True:
             msg, cl_addr = self.server.recvfrom(self.BUFFER)
             data_recv = self.msg_unpack(msg)
-
-
+            
         return(msg,cl_addr)
     
     def current_time(self):
