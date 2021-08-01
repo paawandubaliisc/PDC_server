@@ -9,12 +9,14 @@ BUFFER = 1024
 client = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 
 
-SYNC = 0xAA21
+###################### Config Frame
+SYNC_CONFIG = 0xAA21
+FRAME_SIZE = 48
 ID_CODE = 1
-FRAME_SIZE = 0xABCD
 TIME_BASE = 10**6
 NUM_PMU = 0x1
-ST_NAME = 0xABCDABCD
+ST_NAME = 0xABCD
+
 FORMAT = 0x0007
 PHNMR = 0x0006
 vol_phas = 3
@@ -22,10 +24,29 @@ curr_phas = 3
 ANNMR = 0x0002
 DGNMR = 0x0000
 CHNAM = 0xABCDABCD
+
 PHUNIT = 0x10001000
 ANUNIT = 0x02000032
 DIGUNIT = 0x0
 FNOM = 0x0001
+
+
+########################### Data Frame
+SYNC_DATA = 0xAA00
+STAT = 0xABCD
+VA = 0xDCBADCBADCBADCBA
+VB = 0xDCBADCBADCBADCBA
+VC = 0xDCBADCBADCBADCBA
+IA = 0xDCBADCBADCBADCBA
+IB = 0xDCBADCBADCBADCBA
+IC = 0xDCBADCBADCBADCBA
+FREQ = 0xABCD
+DFREQ = 0xDCBA
+ANALOG1 = 0xDCBADCBA
+ANALOG2 = 0xDCBADCBA
+ANALOG3 = 0xDCBADCBA
+ANALOG4 = 0xDCBADCBA
+DIGITAL = 0xABCD
 
 
 def current_time():
@@ -42,7 +63,7 @@ while i > 0:
     SOC_CLIENT = current_time()[0]
     FRACSEC_CLIENT = current_time()[1]
     msg = struct.pack('!HHHIIIHIHHHHIIIHH', 
-                        SYNC, 
+                        SYNC_CONFIG, 
                         FRAME_SIZE, 
                         ID_CODE ,
                         SOC_CLIENT,
