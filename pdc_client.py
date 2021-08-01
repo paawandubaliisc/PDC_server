@@ -39,12 +39,6 @@ def current_time():
 
 i = 20
 while i > 0:
-    #data = input("Type your message here")
-    #data = data.encode()
-    #CT = time.time()
-    #SOC_CLIENT = int(CT)
-    #FRACSEC_CLIENT = CT - SOC_CLIENT
-    #FRACSEC_CLIENT = FRACSEC_CLIENT * (10 ** 6)
     SOC_CLIENT = current_time()[0]
     FRACSEC_CLIENT = current_time()[1]
     msg = struct.pack('!HHHIIIHIHHHHIIIHH', 
