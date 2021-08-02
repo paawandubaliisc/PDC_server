@@ -86,8 +86,9 @@ def transmit_ON():
     print("\nIA is " + str(IA))
     print("\nIB is " + str(IB))
     print("\nIC is " + str(IC))
+    print("\n\n")
 
-
+transmit_ON()
 
 '''
 i = 20

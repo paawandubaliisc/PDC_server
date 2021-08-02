@@ -22,8 +22,8 @@ class pdc:
             msg, cl_addr = self.server.recvfrom(self.BUFFER)
             SOC_SERVER, FRACSEC_SERVER = self.current_time()
             data_recv = self.msg_unpack(msg)
-            self.logger.info("SYNC FRAME: {}".format(data_recv[1]))    
-            
+            self.logger.info("SYNC FRAME: {}".format(data_recv[0]))    
+            #self.logger.info('Data Received') 
             print("\nSYNC is " + str(data_recv[0]))
             print("\nFRAME size is " + str(data_recv[1]))
             print("\nPMU ID is " + str(data_recv[2]))
@@ -45,7 +45,7 @@ class pdc:
         return SOC_SERVER, FRACSEC_SERVER
 
     def msg_unpack(self,msg):
-        data_recv = struct.unpack('!HHHIIIHIHHHHIIIHH',msg)
+        data_recv = struct.unpack('!3H2IH6Q6IH',msg)
         return data_recv
         '''
         print("SYNC is " + str(data_recv[0]))
@@ -60,10 +60,10 @@ class pdc:
         self.logger.setLevel(logging.INFO)
         self.file_handler = logging.FileHandler('server.log')
         self.file_handler.setLevel(logging.INFO)
-        self.formatter = logging.Formatter('%(asctime)s:%(levelname)s:')
+        self.formatter = logging.Formatter('%(asctime)s:%(levelname)s:%(message)s')
         self.logger.addHandler(self.file_handler)
         self.file_handler.setFormatter(self.formatter)
-        self.logger.info("Log Created")  
+        self.logger.info('SERVER STARTED at {}'.format(self.SERVER)) 
         
 
 
