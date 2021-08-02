@@ -51,13 +51,45 @@ DIGITAL = 0xABCD
 
 def current_time():
         CT = time.time()
-        SOC_SERVER = int(CT)
-        FRACSEC_SERVER = int((CT - SOC_SERVER)*10**6)
+        SOC_CLIENT = int(CT)
+        FRACSEC_CLIENT = int((CT - SOC_CLIENT)*10**6)
         #print("Time is " + str(CT))
         #print("SOC Server in seconds is " + str(SOC_SERVER) + 
                #"\nFRACSEC in useconds is " + str(FRACSEC_SERVER))
-        return SOC_SERVER, FRACSEC_SERVER
+        return SOC_CLIENT, FRACSEC_CLIENT
 
+
+def transmit_ON():
+    SOC_CLIENT, FRACSEC_CLIENT = current_time()
+    msg = struct.pack('!3H2IH6Q6IH',
+                        SYNC_DATA,
+                        FRAME_SIZE,
+                        ID_CODE,
+                        SOC_CLIENT,
+                        FRACSEC_CLIENT,
+                        STAT,
+                        VA, VB, VC,
+                        IA, IB, IC,
+                        FREQ, DFREQ,
+                        ANALOG1, ANALOG2, ANALOG3, ANALOG4,
+                        DIGITAL)
+    client.sendto(msg, SERVER_ADDR)
+    print("\nSYNC FRAME is " + str(SYNC_DATA))
+    print("\nFRAME size is " + str(FRAME_SIZE))
+    print("\nPMU ID is " + str(ID_CODE))
+    print("\nSOC_CLIENT is " + str(SOC_CLIENT))
+    print("\nFRACSEC_CLIENT is " + str(FRACSEC_CLIENT))
+    print("\nSTAT is " + str(STAT))
+    print("\nVA is " + str(VA))
+    print("\nVB is " + str(VB))
+    print("\nVC is " + str(VC))
+    print("\nIA is " + str(IA))
+    print("\nIB is " + str(IB))
+    print("\nIC is " + str(IC))
+
+
+
+'''
 i = 20
 while i > 0:
     SOC_CLIENT = current_time()[0]
@@ -81,10 +113,10 @@ while i > 0:
                         DIGUNIT, 
                         FNOM)
     client.sendto(msg, SERVER_ADDR)
-    print("SYNC is " + str(SYNC_CONFIG))
-    print("FRAME size is " + str(FRAME_SIZE))
-    print("PMU ID is " + str(ID_CODE))
-    print("SOC_CLIENT is " + str(SOC_CLIENT))
-    print("FRACSEC_CLIENT is " + str(FRACSEC_CLIENT))
+    print("\nSYNC is " + str(SYNC_CONFIG))
+    print("\nFRAME size is " + str(FRAME_SIZE))
+    print("\nPMU ID is " + str(ID_CODE))
+    print("\nSOC_CLIENT is " + str(SOC_CLIENT))
+    print("\nFRACSEC_CLIENT is " + str(FRACSEC_CLIENT))
     i = i - 1
-
+'''
