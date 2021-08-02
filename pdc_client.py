@@ -50,46 +50,98 @@ DIGITAL = 0xABCD
 
 
 def current_time():
-        CT = time.time()
-        SOC_CLIENT = int(CT)
-        FRACSEC_CLIENT = int((CT - SOC_CLIENT)*10**6)
-        #print("Time is " + str(CT))
-        #print("SOC Server in seconds is " + str(SOC_SERVER) + 
-               #"\nFRACSEC in useconds is " + str(FRACSEC_SERVER))
-        return SOC_CLIENT, FRACSEC_CLIENT
+    CT = time.time()
+    SOC_CLIENT = int(CT)
+    FRACSEC_CLIENT = int((CT - SOC_CLIENT)*10**6)
+    MILSEC_CLIENT = int((CT - SOC_CLIENT)*10**3)
+    #print("Time is " + str(CT))
+    #print("SOC Server in seconds is " + str(SOC_SERVER) + 
+            #"\nFRACSEC in useconds is " + str(FRACSEC_SERVER))
+    return SOC_CLIENT, FRACSEC_CLIENT, MILSEC_CLIENT
+
 
 
 def transmit_ON():
-    SOC_CLIENT, FRACSEC_CLIENT = current_time()
-    msg = struct.pack('!3H2IH6Q6IH',
-                        SYNC_DATA,
-                        FRAME_SIZE,
-                        ID_CODE,
-                        SOC_CLIENT,
-                        FRACSEC_CLIENT,
-                        STAT,
-                        VA, VB, VC,
-                        IA, IB, IC,
-                        FREQ, DFREQ,
-                        ANALOG1, ANALOG2, ANALOG3, ANALOG4,
-                        DIGITAL)
-    client.sendto(msg, SERVER_ADDR)
-    print("\nSYNC FRAME is " + str(SYNC_DATA))
-    print("\nFRAME size is " + str(FRAME_SIZE))
-    print("\nPMU ID is " + str(ID_CODE))
-    print("\nSOC_CLIENT is " + str(SOC_CLIENT))
-    print("\nFRACSEC_CLIENT is " + str(FRACSEC_CLIENT))
-    print("\nSTAT is " + str(STAT))
-    print("\nVA is " + str(VA))
-    print("\nVB is " + str(VB))
-    print("\nVC is " + str(VC))
-    print("\nIA is " + str(IA))
-    print("\nIB is " + str(IB))
-    print("\nIC is " + str(IC))
-    print("\n\n")
-
+    CT = time.time()
+    curr_time = int(CT*10**3)
+    next_time = curr_time + 20
+    while True:
+        SOC_CLIENT, FRACSEC_CLIENT, MILSEC_CLIENT = current_time()
+        msg = struct.pack('!3H2IH6Q6IH',
+                            SYNC_DATA,
+                            FRAME_SIZE,
+                            ID_CODE,
+                            SOC_CLIENT,
+                            FRACSEC_CLIENT,
+                            STAT,
+                            VA, VB, VC,
+                            IA, IB, IC,
+                            FREQ, DFREQ,
+                            ANALOG1, ANALOG2, ANALOG3, ANALOG4,
+                            DIGITAL)
+        while(int((time.time())*10**3) == next_time):
+            client.sendto(msg, SERVER_ADDR)
+            print("current time is {}".format(next_time))
+            next_time = next_time + 20     
+            
 transmit_ON()
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+'''
+print("\nSYNC FRAME is " + str(SYNC_DATA))
+print("\nFRAME size is " + str(FRAME_SIZE))
+print("\nPMU ID is " + str(ID_CODE))
+print("\nSOC_CLIENT is " + str(SOC_CLIENT))
+print("\nFRACSEC_CLIENT is " + str(FRACSEC_CLIENT))
+print("\nSTAT is " + str(STAT))
+print("\nVA is " + str(VA))
+print("\nVB is " + str(VB))
+print("\nVC is " + str(VC))
+print("\nIA is " + str(IA))
+print("\nIB is " + str(IB))
+print("\nIC is " + str(IC))
+print("\n\n")
+'''
+'''
+
+second, microsec, millisec = current_time()
+print("time is {}".format(time.time()))
+print("\nseconds is {}".format(second))
+print("\nmicrosec is {}".format(microsec))
+print("\nmillisec is {}".format(millisec))
+'''
+
+
+
+'''
+CT = time.time()
+curr_time = int(CT*10**3)
+next_time = curr_time + 20
+print("\ncurr_time is {}".format(curr_time))
+print("\nnext_time is {}".format(next_time))
+
+#SOC_CLIENT = int(CT)
+#FRACSEC_CLIENT = int((CT - SOC_CLIENT)*10**6)
+#MILSEC_CLIENT = int((CT - SOC_CLIENT)*10**3)
+#curr_time = SOC_CLIENT + MILSEC_CLIENT
+
+
+
+
+'''
 '''
 i = 20
 while i > 0:
