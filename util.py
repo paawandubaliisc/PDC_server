@@ -22,15 +22,14 @@ class pdc:
             msg, cl_addr = self.server.recvfrom(self.BUFFER)
             SOC_SERVER, FRACSEC_SERVER = self.current_time()
             data_recv = self.msg_unpack(msg)
-            self.logger.info("SYNC FRAME: {}".format(data_recv[0]))    
-            #self.logger.info('Data Received') 
+            self.log_data(data_recv)           
+            '''       
             print("\nSYNC is " + str(data_recv[0]))
             print("\nFRAME size is " + str(data_recv[1]))
             print("\nPMU ID is " + str(data_recv[2]))
             print("\nSOC_CLIENT is " + str(data_recv[3]))
             print("\nFRACSEC_CLIENT is " + str(data_recv[4]))
-    
-
+            '''
         return(msg,cl_addr)
     
     def current_time(self):
@@ -45,7 +44,7 @@ class pdc:
         return SOC_SERVER, FRACSEC_SERVER
 
     def msg_unpack(self,msg):
-        data_recv = struct.unpack('!3H2IH6Q6IH',msg)
+        data_recv = struct.unpack('!3H2IH12d6IH',msg)
         return data_recv
         '''
         print("SYNC is " + str(data_recv[0]))
@@ -65,6 +64,19 @@ class pdc:
         self.file_handler.setFormatter(self.formatter)
         self.logger.info('SERVER STARTED at {}'.format(self.SERVER)) 
         
+    def log_data(self, data_recv):
+        self.logger.info("E13_pos_mag: {},E13_pos_ph: {}"
+                       .format(data_recv[6], data_recv[7]))
+        self.logger.info("E13_neg_mag: {},E13_neg_ph: {}"
+                       .format(data_recv[8], data_recv[9]))
+        self.logger.info("E13_zero_mag: {},E13_zero_ph: {}"
+                       .format(data_recv[10], data_recv[11]))
+        self.logger.info("I13_pos_mag: {},I13_pos_ph: {}"
+                       .format(data_recv[12], data_recv[13]))
+        self.logger.info("I13_neg_mag: {},I13_neg_ph: {}"
+                       .format(data_recv[14], data_recv[15]))
+        self.logger.info("I13_zero_mag: {},I13_zero_ph: {}"
+                       .format(data_recv[16], data_recv[17]))
 
 
 

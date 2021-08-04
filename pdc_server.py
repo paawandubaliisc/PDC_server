@@ -21,5 +21,4 @@ import multiprocessing
 from util import pdc
 
 PDC_server = pdc()
-#PDC_server.current_time()
 PDC_server.start_server()
