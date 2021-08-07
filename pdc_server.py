@@ -18,7 +18,7 @@ import time
 import socket
 import struct
 import multiprocessing
-from util import pdc
+from server_util import pdc
 
 PDC_server = pdc()
 PDC_server.start_server()

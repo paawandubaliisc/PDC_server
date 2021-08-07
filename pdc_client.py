@@ -47,7 +47,6 @@ def start_server(ip_addr,port_no):
     client = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
     return SERVER_ADDR, client, BUFFER
 
-
 def current_time():
     CT = time.time()
     SOC_CLIENT = int(CT)
