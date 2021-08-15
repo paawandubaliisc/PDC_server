@@ -1,0 +1,155 @@
+2021-08-13 13:21:45,834:INFO:db_log log STARTED
+2021-08-13 13:21:45,834:INFO:client created with localhost,8086,pmu
+2021-08-13 13:21:45,836:INFO:new db with name pmu1 created
+2021-08-13 13:21:45,838:INFO:new db with name pmu2 created
+2021-08-13 13:21:45,839:INFO:new db with name pmu3 created
+2021-08-13 13:21:45,840:INFO:new db with name pmu4 created
+2021-08-13 13:21:45,842:INFO:new db with name pmu5 created
+2021-08-13 13:21:45,843:INFO:new db with name pmu6 created
+2021-08-13 13:21:45,844:INFO:new db with name pmu7 created
+2021-08-13 13:21:45,872:INFO:new db with name pdc created
+2021-08-13 13:21:45,874:INFO:db list is [{'name': '_internal'}, {'name': 'pmu1'}, {'name': 'pmu2'}, {'name': 'pmu3'}, {'name': 'pmu4'}, {'name': 'pmu5'}, {'name': 'pmu6'}, {'name': 'pmu7'}, {'name': 'pdc'}]
+2021-08-13 13:22:02,093:INFO:db switching to pdc
+2021-08-13 13:22:02,216:INFO:Write successful: True
+2021-08-13 13:22:02,218:INFO:db switching to pdc
+2021-08-13 13:22:02,246:INFO:Write successful: True
+2021-08-13 13:22:02,248:INFO:db switching to pdc
+2021-08-13 13:22:02,277:INFO:Write successful: True
+2021-08-13 13:22:02,278:INFO:db switching to pdc
+2021-08-13 13:22:02,306:INFO:Write successful: True
+2021-08-13 13:22:02,307:INFO:db switching to pdc
+2021-08-13 13:22:02,329:INFO:Write successful: True
+2021-08-13 13:22:02,329:INFO:db switching to pdc
+2021-08-13 13:22:02,359:INFO:Write successful: True
+2021-08-13 13:22:02,359:INFO:db switching to pdc
+2021-08-13 13:22:02,397:INFO:Write successful: True
+2021-08-13 13:22:02,397:INFO:db switching to pdc
+2021-08-13 13:22:02,434:INFO:Write successful: True
+2021-08-13 13:22:02,435:INFO:db switching to pdc
+2021-08-13 13:22:02,457:INFO:Write successful: True
+2021-08-13 13:22:02,458:INFO:db switching to pdc
+2021-08-13 13:22:02,480:INFO:Write successful: True
+2021-08-13 13:51:02,854:INFO:db_log log STARTED
+2021-08-13 13:51:02,854:INFO:client created with localhost,8086,pmu
+2021-08-13 13:51:02,857:INFO:new db with name pmu1 created
+2021-08-13 13:51:02,858:INFO:new db with name pmu2 created
+2021-08-13 13:51:02,859:INFO:new db with name pmu3 created
+2021-08-13 13:51:02,861:INFO:new db with name pmu4 created
+2021-08-13 13:51:02,862:INFO:new db with name pmu5 created
+2021-08-13 13:51:02,863:INFO:new db with name pmu6 created
+2021-08-13 13:51:02,864:INFO:new db with name pmu7 created
+2021-08-13 13:51:02,866:INFO:new db with name pdc created
+2021-08-13 13:51:02,867:INFO:db list is [{'name': '_internal'}, {'name': 'pmu1'}, {'name': 'pmu2'}, {'name': 'pmu3'}, {'name': 'pmu4'}, {'name': 'pmu5'}, {'name': 'pmu6'}, {'name': 'pmu7'}, {'name': 'pdc'}]
+2021-08-13 13:51:20,040:INFO:db switching to pdc
+2021-08-13 13:51:20,146:INFO:Write successful: True
+2021-08-13 13:51:20,147:INFO:db switching to pdc
+2021-08-13 13:51:20,185:INFO:Write successful: True
+2021-08-13 13:51:20,187:INFO:db switching to pdc
+2021-08-13 13:51:20,215:INFO:Write successful: True
+2021-08-13 13:51:20,217:INFO:db switching to pdc
+2021-08-13 13:51:20,245:INFO:Write successful: True
+2021-08-13 13:51:20,246:INFO:db switching to pdc
+2021-08-13 13:51:20,268:INFO:Write successful: True
+2021-08-13 13:51:20,268:INFO:db switching to pdc
+2021-08-13 13:51:20,290:INFO:Write successful: True
+2021-08-13 13:51:20,291:INFO:db switching to pdc
+2021-08-13 13:51:20,313:INFO:Write successful: True
+2021-08-13 13:51:20,313:INFO:db switching to pdc
+2021-08-13 13:51:20,335:INFO:Write successful: True
+2021-08-13 13:51:20,336:INFO:db switching to pdc
+2021-08-13 13:51:20,358:INFO:Write successful: True
+2021-08-13 13:51:20,358:INFO:db switching to pdc
+2021-08-13 13:51:20,381:INFO:Write successful: True
+2021-08-13 13:53:09,809:INFO:db_log log STARTED
+2021-08-13 13:53:09,809:INFO:client created with localhost,8086,pmu
+2021-08-13 13:53:09,811:INFO:new db with name pmu1 created
+2021-08-13 13:53:09,813:INFO:new db with name pmu2 created
+2021-08-13 13:53:09,814:INFO:new db with name pmu3 created
+2021-08-13 13:53:09,815:INFO:new db with name pmu4 created
+2021-08-13 13:53:09,817:INFO:new db with name pmu5 created
+2021-08-13 13:53:09,818:INFO:new db with name pmu6 created
+2021-08-13 13:53:09,819:INFO:new db with name pmu7 created
+2021-08-13 13:53:09,821:INFO:new db with name pdc created
+2021-08-13 13:53:09,822:INFO:db list is [{'name': '_internal'}, {'name': 'pmu1'}, {'name': 'pmu2'}, {'name': 'pmu3'}, {'name': 'pmu4'}, {'name': 'pmu5'}, {'name': 'pmu6'}, {'name': 'pmu7'}, {'name': 'pdc'}]
+2021-08-13 13:53:26,886:INFO:db switching to pdc
+2021-08-13 13:53:26,919:INFO:Write successful: True
+2021-08-13 13:53:26,919:INFO:db switching to pdc
+2021-08-13 13:53:26,950:INFO:Write successful: True
+2021-08-13 13:53:26,951:INFO:db switching to pdc
+2021-08-13 13:53:26,987:INFO:Write successful: True
+2021-08-13 13:53:26,989:INFO:db switching to pdc
+2021-08-13 13:53:27,025:INFO:Write successful: True
+2021-08-13 13:53:27,027:INFO:db switching to pdc
+2021-08-13 13:53:27,063:INFO:Write successful: True
+2021-08-13 13:53:27,064:INFO:db switching to pdc
+2021-08-13 13:53:27,100:INFO:Write successful: True
+2021-08-13 13:53:27,100:INFO:db switching to pdc
+2021-08-13 13:53:27,130:INFO:Write successful: True
+2021-08-13 13:53:27,130:INFO:db switching to pdc
+2021-08-13 13:53:27,153:INFO:Write successful: True
+2021-08-13 13:53:27,154:INFO:db switching to pdc
+2021-08-13 13:53:27,175:INFO:Write successful: True
+2021-08-13 13:53:27,176:INFO:db switching to pdc
+2021-08-13 13:53:27,198:INFO:Write successful: True
+2021-08-13 13:56:20,906:INFO:db_log log STARTED
+2021-08-13 13:56:20,906:INFO:client created with localhost,8086,pmu
+2021-08-13 13:56:20,908:INFO:new db with name pmu1 created
+2021-08-13 13:56:20,910:INFO:new db with name pmu2 created
+2021-08-13 13:56:20,911:INFO:new db with name pmu3 created
+2021-08-13 13:56:20,912:INFO:new db with name pmu4 created
+2021-08-13 13:56:20,913:INFO:new db with name pmu5 created
+2021-08-13 13:56:20,914:INFO:new db with name pmu6 created
+2021-08-13 13:56:20,915:INFO:new db with name pmu7 created
+2021-08-13 13:56:20,917:INFO:new db with name pdc created
+2021-08-13 13:56:20,918:INFO:db list is [{'name': '_internal'}, {'name': 'pmu1'}, {'name': 'pmu2'}, {'name': 'pmu3'}, {'name': 'pmu4'}, {'name': 'pmu5'}, {'name': 'pmu6'}, {'name': 'pmu7'}, {'name': 'pdc'}]
+2021-08-13 13:56:37,622:INFO:db switching to pdc
+2021-08-13 13:56:37,705:INFO:Write successful: True
+2021-08-13 13:56:37,707:INFO:db switching to pdc
+2021-08-13 13:56:37,735:INFO:Write successful: True
+2021-08-13 13:56:37,735:INFO:db switching to pdc
+2021-08-13 13:56:37,758:INFO:Write successful: True
+2021-08-13 13:56:37,759:INFO:db switching to pdc
+2021-08-13 13:56:37,788:INFO:Write successful: True
+2021-08-13 13:56:37,789:INFO:db switching to pdc
+2021-08-13 13:56:37,818:INFO:Write successful: True
+2021-08-13 13:56:37,820:INFO:db switching to pdc
+2021-08-13 13:56:37,848:INFO:Write successful: True
+2021-08-13 13:56:37,848:INFO:db switching to pdc
+2021-08-13 13:56:37,870:INFO:Write successful: True
+2021-08-13 13:56:37,871:INFO:db switching to pdc
+2021-08-13 13:56:37,893:INFO:Write successful: True
+2021-08-13 13:56:37,894:INFO:db switching to pdc
+2021-08-13 13:56:37,916:INFO:Write successful: True
+2021-08-13 13:56:37,916:INFO:db switching to pdc
+2021-08-13 13:56:37,976:INFO:Write successful: True
+2021-08-13 14:03:36,920:INFO:db_log log STARTED
+2021-08-13 14:03:36,920:INFO:client created with localhost,8086,pmu
+2021-08-13 14:03:36,922:INFO:new db with name pmu1 created
+2021-08-13 14:03:36,924:INFO:new db with name pmu2 created
+2021-08-13 14:03:36,925:INFO:new db with name pmu3 created
+2021-08-13 14:03:36,926:INFO:new db with name pmu4 created
+2021-08-13 14:03:36,928:INFO:new db with name pmu5 created
+2021-08-13 14:03:36,929:INFO:new db with name pmu6 created
+2021-08-13 14:03:36,930:INFO:new db with name pmu7 created
+2021-08-13 14:03:36,932:INFO:new db with name pdc created
+2021-08-13 14:03:36,933:INFO:db list is [{'name': '_internal'}, {'name': 'pmu1'}, {'name': 'pmu2'}, {'name': 'pmu3'}, {'name': 'pmu4'}, {'name': 'pmu5'}, {'name': 'pmu6'}, {'name': 'pmu7'}, {'name': 'pdc'}]
+2021-08-13 14:03:53,399:INFO:db switching to pdc
+2021-08-13 14:03:53,429:INFO:Write successful: True
+2021-08-13 14:03:53,430:INFO:db switching to pdc
+2021-08-13 14:03:53,460:INFO:Write successful: True
+2021-08-13 14:03:53,462:INFO:db switching to pdc
+2021-08-13 14:03:53,490:INFO:Write successful: True
+2021-08-13 14:03:53,490:INFO:db switching to pdc
+2021-08-13 14:03:53,513:INFO:Write successful: True
+2021-08-13 14:03:53,515:INFO:db switching to pdc
+2021-08-13 14:03:53,543:INFO:Write successful: True
+2021-08-13 14:03:53,545:INFO:db switching to pdc
+2021-08-13 14:03:53,574:INFO:Write successful: True
+2021-08-13 14:03:53,575:INFO:db switching to pdc
+2021-08-13 14:03:53,625:INFO:Write successful: True
+2021-08-13 14:03:53,626:INFO:db switching to pdc
+2021-08-13 14:03:53,656:INFO:Write successful: True
+2021-08-13 14:03:53,656:INFO:db switching to pdc
+2021-08-13 14:03:53,686:INFO:Write successful: True
+2021-08-13 14:03:53,686:INFO:db switching to pdc
+2021-08-13 14:03:53,716:INFO:Write successful: True

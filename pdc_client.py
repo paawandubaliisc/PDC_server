@@ -55,8 +55,8 @@ def current_time():
 
 def get_next_time():
     curr_time = int((time.time())*10**3)
-    #next_time = curr_time + 20
-    next_time = curr_time
+    next_time = curr_time + 20
+    #next_time = curr_time
     return next_time
 
 def create_log(SERVER):
@@ -109,7 +109,7 @@ def transmit_ON(file_name, sheet_name):
     start_sending(row, col, sheet1, client, logger, SERVER_ADDR, next_time)
     print("end")         
 
-transmit_ON(file_name = "Test1", sheet_name = "Bus_13")
+transmit_ON(file_name = "Test1", sheet_name = "testdb")
 
 
 '''
