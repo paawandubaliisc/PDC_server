@@ -54,7 +54,7 @@ def current_time():
     return SOC_CLIENT, FRACSEC_CLIENT
 
 def get_next_time():
-    curr_time = 1637788307798
+    
     next_time = curr_time + 20
     #next_time = curr_time
     return next_time
@@ -102,13 +102,16 @@ def start_sending(row, col, sheet1, client, logger, SERVER_ADDR, next_time):
                 time.sleep(0.001)
 
 def transmit_ON(file_name, sheet_name):
+    
     SERVER_ADDR, client, BUFFER = start_server("10.64.37.35", 2345)
     row, col, sheet1 = open_workbook(file_name, sheet_name)
     logger = create_log(SERVER_ADDR)
     next_time = get_next_time()
     start_sending(row, col, sheet1, client, logger, SERVER_ADDR, next_time)
-    print("end")         
+    print("end")
 
+
+curr_time = 1637789344334
 transmit_ON(file_name = "Test1", sheet_name = "testdb")
 
 
