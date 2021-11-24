@@ -1,14 +1,15 @@
 #from datetime import datetime
-from influxdb import InfluxDBClient
+#from influxdb import InfluxDBClient
 #t1 = datetime.now()
 #print(t1)
-'''
+
 import time
 
 print(time.time())
-print(int((time.time())*10**3))
+print(time.time() + 420)
+print(int((time.time() + 300)*10**3))
 
-
+'''
 CT = time.time()
 SOC_CLIENT = int(CT)
 FRACSEC_CLIENT = int((CT - SOC_CLIENT)*10**6)

@@ -54,7 +54,7 @@ def current_time():
     return SOC_CLIENT, FRACSEC_CLIENT
 
 def get_next_time():
-    curr_time = int((time.time())*10**3)
+    curr_time = 1637788307798
     next_time = curr_time + 20
     #next_time = curr_time
     return next_time
