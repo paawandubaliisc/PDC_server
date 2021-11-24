@@ -6,6 +6,28 @@ import time
 from influxdb import InfluxDBClient
 from collections import deque
 
+
+################## Queue class
+class queue:
+    def __init__(self):
+        self.queue = deque()
+
+    def enqueue(self, data_recv):
+        self.queue.appendleft(data_recv)
+    
+    def dequeue(self):
+        return self.queue.pop()
+    
+    def size(self):
+        return len(self.queue)
+    
+    def show(self):
+        print(self.queue)
+
+    def empty_check(self):
+        return True if len(self.queue) == 0 else False
+
+
 ################## Logger Class
 class log:
     def __init__(self,
@@ -26,6 +48,7 @@ class log:
     def log_data_gen(self, sender, MILSEC_SERVER, data_recv):
         self.logger.info("Sender is {}".format(sender))
         self.logger.info("Time is {}".format(MILSEC_SERVER))
+        '''
         self.logger.info("E13_pos_mag: {},E13_pos_ph: {}"
                         .format(data_recv[6], data_recv[7]))
         self.logger.info("E13_neg_mag: {},E13_neg_ph: {}"
@@ -38,6 +61,7 @@ class log:
                         .format(data_recv[14], data_recv[15]))
         self.logger.info("I13_zero_mag: {},I13_zero_ph: {}"
                         .format(data_recv[16], data_recv[17]))
+        '''
         self.logger.info("Message Complete")
     
     def log_data(self, msg):
@@ -159,28 +183,58 @@ class server:
                           'pmu6' : "pmu6_func",
                           'pmu7' : "pmu7_func",
                           'pdc'  : "pdc_func"}
+        self.SERVER_ADDR = (self.SERVER, self.PORT)
+        self.BUFFER = 1024
+        self.server = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+        self.gen_log = log(logger_name = "gen_log", logger_level = "INFO")
+        #self.client = db("localhost", 8086, "pmu")
+        self.db_queue = queue()
+        self.log_queue = queue()
+        self.pmu_queue = queue()
 
     #SERVER = "10.64.37.35"
     #PORT = 2345
     
     def start_server(self):
-        self.SERVER_ADDR = (self.SERVER, self.PORT)
-        self.BUFFER = 1024
-        self.server = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-        gen_log = log(logger_name = "gen_log", logger_level = "INFO")
-        client = db("localhost", 8086, "pmu")
         self.server.bind(self.SERVER_ADDR)
         print("[SERVER STARTING] at " + str(self.SERVER))
         while True:
             msg, cl_addr = self.server.recvfrom(self.BUFFER)
             MILSEC_SERVER = self.current_time()[2]
-            data_recv = self.msg_unpack(msg)
+            data_recv = self.msg_unpack(msg) 
             sender = self.dict[cl_addr[0]]
-            gen_log.log_data_gen(sender, MILSEC_SERVER, data_recv)
-            client.switch_to_db(sender)
-            json = client.get_json(sender, data_recv, MILSEC_SERVER)
-            client.write_to_db(json)
+            queue_set = [sender, MILSEC_SERVER,data_recv]
+            self.db_queue.enqueue(queue_set)
+            self.log_queue.enqueue(queue_set)
+            self.pmu_queue.enqueue(queue_set)
+            ################################################
+    
+    def start_gen_logging(self):
+        while True:
+            if self.log_queue.empty_check() == False:
+                queue_set = self.log_queue.dequeue()
+                self.gen_log.log_data_gen(queue_set[0], queue_set[1], queue_set[2])
+        
+    
+    def start_db_logging(self):
+        while True:
+            if self.db_queue.empty_check() == False:
+                queue_set = self.db_queue.dequeue()
+                sender = queue_set[0]
+                MILSEC_SERVER = queue_set[1]
+                data_recv = queue_set[2]
+                self.client.switch_to_db(sender)
+                json = self.client.get_json(sender, data_recv, MILSEC_SERVER)
+                self.client.write_to_db(json)
 
+
+            
+
+            
+
+
+            
+            
     def pmu1_func(self, data_recv, MILSEC_SERVER):
         pass
 
