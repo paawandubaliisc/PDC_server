@@ -205,9 +205,7 @@ class server:
             sender = self.dict[cl_addr[0]]
             queue_set = [sender, MILSEC_SERVER,data_recv]
             print("Data recv from {} at {}".format(sender, MILSEC_SERVER))
-            self.db_queue.enqueue(queue_set)
-            self.log_queue.enqueue(queue_set)
-            self.pmu_queue.enqueue(queue_set)
+          
             ################################################
     
     def start_gen_logging(self):
