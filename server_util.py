@@ -188,9 +188,7 @@ class server:
         self.server = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
         self.gen_log = log(logger_name = "gen_log", logger_level = "INFO")
         #self.client = db("localhost", 8086, "pmu")
-        self.db_queue = queue()
-        self.log_queue = queue()
-        self.pmu_queue = queue()
+ 
 
     #SERVER = "10.64.37.35"
     #PORT = 2345
