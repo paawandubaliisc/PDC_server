@@ -223,7 +223,7 @@ class server:
     
     def switch(self, sender, queue_set):
         func_name = self.func_dict(sender)
-        self.func_name(queue_set)
+        func_name(queue_set)
 
 
     def start_gen_logging(self):
