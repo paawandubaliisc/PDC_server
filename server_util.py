@@ -203,7 +203,7 @@ class server:
             sender = self.dict[cl_addr[0]]
             MILSEC_CLIENT = int(data_recv[3] * 10**3 + data_recv[4] * 10**-3)   
             queue_set = [sender, MILSEC_CLIENT, MILSEC_SERVER,data_recv]
-            print("Data, Sender: {}, client time: {}, server time: {}".format(sender, MILSEC_CLIENT, MILSEC_SERVER))
+            print("Data, Sender: {}, client time: {}, server time: {}".format(sender, data_recv[6], MILSEC_SERVER))
 
 
 

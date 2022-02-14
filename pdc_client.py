@@ -73,7 +73,7 @@ def create_log(SERVER):
 def start_sending(row, col, sheet1, client, logger, SERVER_ADDR, next_time):
     data = [0]*14
     for i in range(2,row):
-        for j in range(2, col + 1):
+        for j in range(1, col + 1):
             data[j] = sheet1.cell(i,j).value
         SOC_CLIENT, FRACSEC_CLIENT = current_time()
         msg = struct.pack('!3H2IH12d6IH',
@@ -83,6 +83,7 @@ def start_sending(row, col, sheet1, client, logger, SERVER_ADDR, next_time):
                             SOC_CLIENT,
                             FRACSEC_CLIENT,
                             STAT,
+                            data[1],
                             data[2], data[3], data[4],
                             data[5], data[6], data[7],
                             data[8], data[9], data[10],
@@ -111,7 +112,7 @@ def transmit_ON(file_name, sheet_name):
     print("end")
 
 
-curr_time = 1644850996391
+curr_time = 1644863249780
 transmit_ON(file_name = "Test1", sheet_name = "testdb")
 
 

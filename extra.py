@@ -1,14 +1,7 @@
-#from datetime import datetime
-#from influxdb import InfluxDBClient
-#t1 = datetime.now()
-#print(t1)
+
 
 import time
-
-# print(time.time())
-# print(time.time() + 420)
-# print(int((time.time() + 300)*10**3))
-
+'''
 CT = time.time()
 SOC_SERVER = int(CT)
 FRACSEC_SERVER = (CT - SOC_SERVER)*10**6
@@ -27,17 +20,7 @@ print("\nMILSEC_SERVER_calc = ", MILSEC_SERVER_calc)
 
 print("\nsend start time MILSEC_SERVER = ", MILSEC_SERVER + 600000)
 
-'''
-CT = time.time()
-SOC_CLIENT = int(CT)
-FRACSEC_CLIENT = int((CT - SOC_CLIENT)*10**6)
-print(CT)
-print(SOC_CLIENT)
-print(FRACSEC_CLIENT)
-print(int(CT*10**3))
-print((SOC_CLIENT + FRACSEC_CLIENT*10**-6)*10**3)
-print(int((SOC_CLIENT + FRACSEC_CLIENT*10**-6)*10**3))
-'''
+
 from collections import deque
 
 class queue:
@@ -72,26 +55,35 @@ set3 = data_queue.dequeue()
 print(set3)
 set3 = data_queue.dequeue()
 print(set3)
+'''
+CT = time.time()
+SOC_SERVER = int(CT)
+FRACSEC_SERVER = (CT - SOC_SERVER)*10**6
+MILSEC_SERVER = int((time.time())*10**3)
+MILSEC_SERVER_calc = int(SOC_SERVER * 10**3 + FRACSEC_SERVER * 10**-3)
+print("SOC_SERVER = ", SOC_SERVER)
 
+print("\nFRACSEC_SERVER = ", FRACSEC_SERVER)
+print("\nMILSEC_SERVER = ", MILSEC_SERVER)
+print("\nMILSEC_SERVER_calc = ", MILSEC_SERVER_calc)
+
+print("\nsend start time MILSEC_SERVER = ", MILSEC_SERVER + 600000)
 
 
 
 '''
-timeprecision = 's'
-t2 = str(datetime.now())
-print(t2.split( ))
-t3 = t2.split( )
-print(t3[1])
+import openpyxl
 
+# workbook = openpyxl.load_workbook("{}.xlsx".format(Test1))
+workbook = openpyxl.load_workbook("Test1.xlsx")
+sheet1 = workbook['{}'.format("testdb")]
+row = sheet1.max_row
+col = sheet1.max_column
+print("total rows: {}".format(row))
+print("total columns: {}".format(col))
 
-func_dict = {'pmu1' : "a",
-                  'pmu2' : "b",
-                  'pmu3' : "c",
-                  'pmu4' : "d",
-                  'pmu5' : "e",
-                  'pmu6' : "f",
-                  'pmu7' : "g",
-                  'pmu8' : "h"}
-
-print(func_dict.get('pmu8'))
+for i in range(2,row):
+        for j in range(1, col + 1):
+            data = sheet1.cell(i,j).value
+            print("row: {}, col: {}, value:{}".format(i,j,data))
 '''
