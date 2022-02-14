@@ -111,7 +111,7 @@ def transmit_ON(file_name, sheet_name):
     print("end")
 
 
-curr_time = 1637789344334
+curr_time = 1644850087258
 transmit_ON(file_name = "Test1", sheet_name = "testdb")
 
 
