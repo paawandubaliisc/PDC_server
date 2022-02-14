@@ -197,17 +197,22 @@ class server:
         self.server.bind(self.SERVER_ADDR)
         print("[SERVER STARTING] at " + str(self.SERVER))
         msg_count = 0
+        BFI = 0
         while True:
             msg, cl_addr = self.server.recvfrom(self.BUFFER)
             MILSEC_SERVER = self.current_time()[2]
-            data_recv = self.msg_unpack(msg) 
+            data_recv = self.msg_unpack(msg)
+            if data_recv[26] == 1:
+                BFI = 1 
             sender = self.dict[cl_addr[0]]
             MILSEC_CLIENT = int(data_recv[3] * 10**3 + data_recv[4] * 10**-3)   
             queue_set = [sender, MILSEC_CLIENT, MILSEC_SERVER,data_recv]
             print("Data, Sender: {}, client time: {}, server time: {}".format(sender, data_recv[6], MILSEC_SERVER))
             msg_count = msg_count + 1
             if (msg_count % 7) == 0:
-                print("Data set received") 
+                print("Data set received")
+                if BFI == 1:
+                    print("Trigger SFVA") 
 
 
 
@@ -274,7 +279,7 @@ class server:
         return SOC_SERVER, FRACSEC_SERVER, MILSEC_SERVER
         
     def msg_unpack(self,msg):
-        data_recv = struct.unpack('!3H2IH13d6IH',msg)
+        data_recv = struct.unpack('!3H2IH13d6Id',msg)
         return data_recv
         
 

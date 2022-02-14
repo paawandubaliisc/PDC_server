@@ -67,7 +67,7 @@ print("\nFRACSEC_SERVER = ", FRACSEC_SERVER)
 print("\nMILSEC_SERVER = ", MILSEC_SERVER)
 print("\nMILSEC_SERVER_calc = ", MILSEC_SERVER_calc)
 
-print("\nsend start time MILSEC_SERVER = ", MILSEC_SERVER + 300000)
+print("\nsend start time MILSEC_SERVER = ", MILSEC_SERVER + 200000)
 
 
 
