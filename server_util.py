@@ -201,7 +201,8 @@ class server:
             MILSEC_SERVER = self.current_time()[2]
             data_recv = self.msg_unpack(msg) 
             sender = self.dict[cl_addr[0]]
-            queue_set = [sender, MILSEC_SERVER,data_recv]
+            MILSEC_CLIENT = int(data_recv[3] * 10**3 + data_recv[4] * 10**-3)   
+            queue_set = [sender, MILSEC_CLIENT, MILSEC_SERVER,data_recv]
             print("Data recv from {} at {}".format(sender, MILSEC_SERVER))
           
             ################################################

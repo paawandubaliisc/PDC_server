@@ -5,9 +5,25 @@
 
 import time
 
-print(time.time())
-print(time.time() + 420)
-print(int((time.time() + 300)*10**3))
+# print(time.time())
+# print(time.time() + 420)
+# print(int((time.time() + 300)*10**3))
+
+CT = time.time()
+SOC_SERVER = int(CT)
+FRACSEC_SERVER = (CT - SOC_SERVER)*10**6
+MILSEC_SERVER = int((time.time())*10**3)
+MILSEC_SERVER_calc = int(SOC_SERVER * 10**3 + FRACSEC_SERVER * 10**-3)
+
+
+arr = [1, 2, 3]
+print("arr[0] = ", arr[0])
+
+
+print("SOC_SERVER = ", SOC_SERVER)
+print("\nFRACSEC_SERVER = ", FRACSEC_SERVER)
+print("\nMILSEC_SERVER = ", MILSEC_SERVER)
+print("\nMILSEC_SERVER_calc = ", MILSEC_SERVER_calc)
 
 '''
 CT = time.time()
