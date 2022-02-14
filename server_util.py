@@ -203,7 +203,12 @@ class server:
             sender = self.dict[cl_addr[0]]
             MILSEC_CLIENT = int(data_recv[3] * 10**3 + data_recv[4] * 10**-3)   
             queue_set = [sender, MILSEC_CLIENT, MILSEC_SERVER,data_recv]
-            print("Data recv from {} at {}".format(sender, MILSEC_SERVER))
+            print("Data recv from {} with stamp {}".format(sender, MILSEC_CLIENT))
+
+
+
+
+
           
             ################################################
     
