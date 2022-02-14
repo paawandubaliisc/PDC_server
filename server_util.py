@@ -219,7 +219,7 @@ class server:
             ################################################
     
     def switch(self, sender, queue_set):
-        func_name = "self." + self.func_dict(sender)
+        func_name = "self." + self.func_dict[sender]
         func_name(queue_set)
 
 
