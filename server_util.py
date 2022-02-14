@@ -209,10 +209,7 @@ class server:
             CLIENT_TIME = data_recv[6]    
             queue_set = [sender, MILSEC_SERVER,data_recv]
             print("Data, Sender: {}, client time: {}, server time: {}".format(sender, CLIENT_TIME, MILSEC_SERVER))
-            
-            
-            
-            
+            self.switch(self, sender, queue_set)
             msg_count = msg_count + 1
             if (msg_count % 7) == 0:
                 print("Data set received")
@@ -222,7 +219,7 @@ class server:
             ################################################
     
     def switch(self, sender, queue_set):
-        func_name = self.func_dict(sender)
+        func_name = "self." + self.func_dict(sender)
         func_name(queue_set)
 
 
