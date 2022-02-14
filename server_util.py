@@ -202,7 +202,7 @@ class server:
             msg, cl_addr = self.server.recvfrom(self.BUFFER)
             MILSEC_SERVER = self.current_time()[2]
             data_recv = self.msg_unpack(msg)
-            if data_recv[26] == 1:
+            if data_recv[25] == 1:
                 BFI = 1 
             sender = self.dict[cl_addr[0]]
             MILSEC_CLIENT = int(data_recv[3] * 10**3 + data_recv[4] * 10**-3)   
