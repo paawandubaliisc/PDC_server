@@ -270,7 +270,7 @@ class server:
         return SOC_SERVER, FRACSEC_SERVER, MILSEC_SERVER
         
     def msg_unpack(self,msg):
-        data_recv = struct.unpack('!3H2IH12d6IH',msg)
+        data_recv = struct.unpack('!3H2IH13d6IH',msg)
         return data_recv
         
 
