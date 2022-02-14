@@ -196,6 +196,7 @@ class server:
     def start_server(self):
         self.server.bind(self.SERVER_ADDR)
         print("[SERVER STARTING] at " + str(self.SERVER))
+        msg_count = 0
         while True:
             msg, cl_addr = self.server.recvfrom(self.BUFFER)
             MILSEC_SERVER = self.current_time()[2]
@@ -204,6 +205,9 @@ class server:
             MILSEC_CLIENT = int(data_recv[3] * 10**3 + data_recv[4] * 10**-3)   
             queue_set = [sender, MILSEC_CLIENT, MILSEC_SERVER,data_recv]
             print("Data, Sender: {}, client time: {}, server time: {}".format(sender, data_recv[6], MILSEC_SERVER))
+            msg_count = msg_count + 1
+            if (msg_count % 7) == 0:
+                print("Data set received") 
 
 
 
