@@ -205,20 +205,17 @@ class server:
             if data_recv[25] == 1:
                 BFI = 1 
             sender = self.dict[cl_addr[0]]
-            MILSEC_CLIENT = int(data_recv[3] * 10**3 + data_recv[4] * 10**-3)   
-            queue_set = [sender, MILSEC_CLIENT, MILSEC_SERVER,data_recv]
-            print("Data, Sender: {}, client time: {}, server time: {}".format(sender, data_recv[6], MILSEC_SERVER))
+            MILSEC_CLIENT = int(data_recv[3] * 10**3 + data_recv[4] * 10**-3)
+            CLIENT_TIME = data_recv[6]    
+            queue_set = [sender, MILSEC_SERVER,data_recv]
+            print("Data, Sender: {}, client time: {}, server time: {}".format(sender, CLIENT_TIME, MILSEC_SERVER))
+            self.self.func_dict(sender)
             msg_count = msg_count + 1
             if (msg_count % 7) == 0:
                 print("Data set received")
                 if BFI == 1:
                     print("Trigger SFVA") 
 
-
-
-
-
-          
             ################################################
     
     def start_gen_logging(self):
@@ -247,29 +244,29 @@ class server:
 
             
             
-    def pmu1_func(self, data_recv, MILSEC_SERVER):
-        pass
+    def ss8_func(self, queue_set, MILSEC_SERVER):
+        print("ss8 executed")
 
-    def pmu2_func(self, data_recv, MILSEC_SERVER):
-        pass
+    def ss26_func(self, queue_set, MILSEC_SERVER):
+        print("ss26 executed")
 
-    def pmu3_func(self, data_recv, MILSEC_SERVER):
-        pass
+    def ss17_func(self, queue_set, MILSEC_SERVER):
+        print("ss17 executed")
 
-    def pmu4_func(self, data_recv, MILSEC_SERVER):
-        pass
+    def ss30_func(self, queue_set, MILSEC_SERVER):
+        print("ss30 executed")
 
-    def pmu5_func(self, data_recv, MILSEC_SERVER):
-        pass
+    def ss38_func(self, queue_set, MILSEC_SERVER):
+        print("ss38 executed")
 
-    def pmu6_func(self, data_recv, MILSEC_SERVER):
-        pass
+    def ss37_func(self, queue_set, MILSEC_SERVER):
+        print("ss37 executed")
 
-    def pmu7_func(self, data_recv, MILSEC_SERVER):
-        pass
+    def ss65_func(self, queue_set, MILSEC_SERVER):
+        print("ss65 executed")
 
-    def pdc_func(self, data_recv, MILSEC_SERVER):
-        pass
+    def pdc_func(self, queue_set, MILSEC_SERVER):
+        print("pdc executed")
 
     def current_time(self):
         CT = time.time()
