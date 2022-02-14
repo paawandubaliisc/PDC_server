@@ -76,7 +76,7 @@ def start_sending(row, col, sheet1, client, logger, SERVER_ADDR, next_time):
         for j in range(1, col + 1):
             data[j] = sheet1.cell(i,j).value
         SOC_CLIENT, FRACSEC_CLIENT = current_time()
-        msg = struct.pack('!3H2IH12d6IH',
+        msg = struct.pack('!3H2IH13d6IH',
                             SYNC_DATA,
                             FRAME_SIZE,
                             ID_CODE,
@@ -112,7 +112,7 @@ def transmit_ON(file_name, sheet_name):
     print("end")
 
 
-curr_time = 1644863249780
+curr_time = 1644864137427
 transmit_ON(file_name = "Test1", sheet_name = "testdb")
 
 
