@@ -209,7 +209,10 @@ class server:
             CLIENT_TIME = data_recv[6]    
             queue_set = [sender, MILSEC_SERVER,data_recv]
             print("Data, Sender: {}, client time: {}, server time: {}".format(sender, CLIENT_TIME, MILSEC_SERVER))
-            self.self.func_dict(sender)
+            
+            
+            
+            
             msg_count = msg_count + 1
             if (msg_count % 7) == 0:
                 print("Data set received")
@@ -218,6 +221,11 @@ class server:
 
             ################################################
     
+    def switch(self, sender, queue_set):
+        func_name = self.func_dict(sender)
+        self.func_name(queue_set)
+
+
     def start_gen_logging(self):
         while True:
             if self.log_queue.empty_check() == False:
@@ -237,35 +245,30 @@ class server:
                 self.client.write_to_db(json)
 
 
+          
             
-
-            
-
-
-            
-            
-    def ss8_func(self, queue_set, MILSEC_SERVER):
+    def ss8_func(self, queue_set):
         print("ss8 executed")
 
-    def ss26_func(self, queue_set, MILSEC_SERVER):
+    def ss26_func(self, queue_set):
         print("ss26 executed")
 
-    def ss17_func(self, queue_set, MILSEC_SERVER):
+    def ss17_func(self, queue_set):
         print("ss17 executed")
 
-    def ss30_func(self, queue_set, MILSEC_SERVER):
+    def ss30_func(self, queue_set):
         print("ss30 executed")
 
-    def ss38_func(self, queue_set, MILSEC_SERVER):
+    def ss38_func(self, queue_set):
         print("ss38 executed")
 
-    def ss37_func(self, queue_set, MILSEC_SERVER):
+    def ss37_func(self, queue_set):
         print("ss37 executed")
 
-    def ss65_func(self, queue_set, MILSEC_SERVER):
+    def ss65_func(self, queue_set):
         print("ss65 executed")
 
-    def pdc_func(self, queue_set, MILSEC_SERVER):
+    def pdc_func(self, queue_set):
         print("pdc executed")
 
     def current_time(self):
