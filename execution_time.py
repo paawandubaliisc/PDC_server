@@ -198,7 +198,7 @@ def sfva(ss8_dataset, ss26_dataset, ss17_dataset,
     
     t1 = time.time_ns()
     
-    with concurrent.futures.ThreadPoolExecutor as executor:
+    with concurrent.futures.ThreadPoolExecutor() as executor:
         p1 = executor.submit(curr1, va17_1, va17_2, va17_0,
                                     va30_1, va30_2, va30_0,
                                     x1_1730, x2_1730, x0_1730)
