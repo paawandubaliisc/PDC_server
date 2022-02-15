@@ -144,13 +144,13 @@ def sfva(ss8_dataset, ss26_dataset, ss17_dataset,
     t3 = time.perf_counter_ns()
     
     ####################bus 26 data
-    
-    va26_1_re = ss26_dataset[3]
-    va26_1_im = ss26_dataset[4]
-    va26_2_re = ss26_dataset[5]
-    va26_2_im = ss26_dataset[6]
-    va26_0_re = ss26_dataset[7]
-    va26_0_im = ss26_dataset[8]
+    data26 = ss26_dataset[3]
+    va26_1_re = data26[3]
+    va26_1_im = data26[4]
+    va26_2_re = data26[5]
+    va26_2_im = data26[6]
+    va26_0_re = data26[7]
+    va26_0_im = data26[8]
 
 
     # data[3], data[4], data[5],
@@ -169,13 +169,13 @@ def sfva(ss8_dataset, ss26_dataset, ss17_dataset,
     va26_0 = complex(va26_0_re,va26_0_im)
 
     ##################### bus 30 data
-    
-    va30_1_re = ss30_dataset[3]
-    va30_1_im = ss30_dataset[4]
-    va30_2_re = ss30_dataset[5]
-    va30_2_im = ss30_dataset[6]
-    va30_0_re = ss30_dataset[7]
-    va30_0_im = ss30_dataset[8]
+    data30 = ss30_dataset[3]
+    va30_1_re = data30[3]
+    va30_1_im = data30[4]
+    va30_2_re = data30[5]
+    va30_2_im = data30[6]
+    va30_0_re = data30[7]
+    va30_0_im = data30[8]
 
 
     # va30_1_re = -75.8693271986
@@ -192,12 +192,13 @@ def sfva(ss8_dataset, ss26_dataset, ss17_dataset,
     va30 = va30_1 + va30_2 + va30_0
 
     ######################## bus 08 data
-    va08_1_re = ss8_dataset[3]
-    va08_1_im = ss8_dataset[4]
-    va08_2_re = ss8_dataset[5]
-    va08_2_im = ss8_dataset[6]
-    va08_0_re = ss8_dataset[7]
-    va08_0_im = ss8_dataset[8]
+    data8 = ss8_dataset[3]
+    va08_1_re = data8[3]
+    va08_1_im = data8[4]
+    va08_2_re = data8[5]
+    va08_2_im = data8[6]
+    va08_0_re = data8[7]
+    va08_0_im = data8[8]
 
 
     # va08_1_re = -86.7108142611
@@ -212,12 +213,13 @@ def sfva(ss8_dataset, ss26_dataset, ss17_dataset,
     va08_0 = complex(va08_0_re,va08_0_im)
 
     ######################## bus 17 data
-    va17_1_re = ss17_dataset[3]
-    va17_1_im = ss17_dataset[4]
-    va17_2_re = ss17_dataset[5]
-    va17_2_im = ss17_dataset[6]
-    va17_0_re = ss17_dataset[7]
-    va17_0_im = ss17_dataset[8]
+    data17 = ss17_dataset[3]
+    va17_1_re = data17[3]
+    va17_1_im = data17[4]
+    va17_2_re = data17[5]
+    va17_2_im = data17[6]
+    va17_0_re = data17[7]
+    va17_0_im = data17[8]
 
     # va17_1_re = -32.1604343812
     # va17_1_im = -58.3697997785
