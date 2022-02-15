@@ -145,12 +145,24 @@ def sfva(ss8_dataset, ss26_dataset, ss17_dataset,
     
     ####################bus 26 data
     
-    va26_1_re = -78.1044890236
-    va26_1_im = -151.493586093
-    va26_2_re = 4.35542605871
-    va26_2_im = 17.0979516936
-    va26_0_re = 15.7567836535
-    va26_0_im = 22.5999966622
+    va26_1_re = ss26_dataset[3]
+    va26_1_im = ss26_dataset[4]
+    va26_2_re = ss26_dataset[5]
+    va26_2_im = ss26_dataset[6]
+    va26_0_re = ss26_dataset[7]
+    va26_0_im = ss26_dataset[8]
+
+
+    # data[3], data[4], data[5],
+    # data[6], data[7], data[8],
+
+
+    # va26_1_re = -78.1044890236
+    # va26_1_im = -151.493586093
+    # va26_2_re = 4.35542605871
+    # va26_2_im = 17.0979516936
+    # va26_0_re = 15.7567836535
+    # va26_0_im = 22.5999966622
 
     va26_1 = complex(va26_1_re,va26_1_im)
     va26_2 = complex(va26_2_re,va26_2_im)
@@ -158,12 +170,20 @@ def sfva(ss8_dataset, ss26_dataset, ss17_dataset,
 
     ##################### bus 30 data
     
-    va30_1_re = -75.8693271986
-    va30_1_im = -137.323010883
-    va30_2_re = 4.93128358009
-    va30_2_im = 24.4873283626
-    va30_0_re = 20.5127913535
-    va30_0_im = 38.544720748
+    va30_1_re = ss30_dataset[3]
+    va30_1_im = ss30_dataset[4]
+    va30_2_re = ss30_dataset[5]
+    va30_2_im = ss30_dataset[6]
+    va30_0_re = ss30_dataset[7]
+    va30_0_im = ss30_dataset[8]
+
+
+    # va30_1_re = -75.8693271986
+    # va30_1_im = -137.323010883
+    # va30_2_re = 4.93128358009
+    # va30_2_im = 24.4873283626
+    # va30_0_re = 20.5127913535
+    # va30_0_im = 38.544720748
 
     va30_1 = complex(va30_1_re,va30_1_im)
     va30_2 = complex(va30_2_re,va30_2_im)
@@ -172,24 +192,40 @@ def sfva(ss8_dataset, ss26_dataset, ss17_dataset,
     va30 = va30_1 + va30_2 + va30_0
 
     ######################## bus 08 data
-    va08_1_re = -86.7108142611
-    va08_1_im = -133.498889352
-    va08_2_re = 6.52982317905
-    va08_2_im = 18.0985055825
-    va08_0_re = 16.5237979745
-    va08_0_im = 19.9964231992
+    va08_1_re = ss8_dataset[3]
+    va08_1_im = ss8_dataset[4]
+    va08_2_re = ss8_dataset[5]
+    va08_2_im = ss8_dataset[6]
+    va08_0_re = ss8_dataset[7]
+    va08_0_im = ss8_dataset[8]
+
+
+    # va08_1_re = -86.7108142611
+    # va08_1_im = -133.498889352
+    # va08_2_re = 6.52982317905
+    # va08_2_im = 18.0985055825
+    # va08_0_re = 16.5237979745
+    # va08_0_im = 19.9964231992
 
     va08_1 = complex(va08_1_re,va08_1_im)
     va08_2 = complex(va08_2_re,va08_2_im)
     va08_0 = complex(va08_0_re,va08_0_im)
 
     ######################## bus 17 data
-    va17_1_re = -32.1604343812
-    va17_1_im = -58.3697997785
-    va17_2_re = 2.19081136642
-    va17_2_im = 8.65866169555
-    va17_0_re = 8.76658282709
-    va17_0_im = 14.3648919985
+    va17_1_re = ss17_dataset[3]
+    va17_1_im = ss17_dataset[4]
+    va17_2_re = ss17_dataset[5]
+    va17_2_im = ss17_dataset[6]
+    va17_0_re = ss17_dataset[7]
+    va17_0_im = ss17_dataset[8]
+
+    # va17_1_re = -32.1604343812
+    # va17_1_im = -58.3697997785
+    # va17_2_re = 2.19081136642
+    # va17_2_im = 8.65866169555
+    # va17_0_re = 8.76658282709
+    # va17_0_im = 14.3648919985
+
 
     va17_1 = complex(va17_1_re,va17_1_im)*(345/143.52)
     va17_2 = complex(va17_2_re,va17_2_im)*(345/143.52)
@@ -198,26 +234,18 @@ def sfva(ss8_dataset, ss26_dataset, ss17_dataset,
     
     t1 = time.time_ns()
     
-    with concurrent.futures.ThreadPoolExecutor() as executor:
-        p1 = executor.submit(curr1, va17_1, va17_2, va17_0,
-                                    va30_1, va30_2, va30_0,
-                                    x1_1730, x2_1730, x0_1730)
-        
-        p2 = executor.submit(curr2, va26_1, va26_2, va26_0,
-                                    va30_1, va30_2, va30_0,
-                                    z_dash1_2630, y_dash_by_2_1_2630,
-                                    z_dash0_2630, y_dash_by_2_0_2630)
+    ia1730_1 = (va17_1 - va30_1)/x1_1730
+    ia1730_2 = (va17_2 - va30_2)/x2_1730
+    ia1730_0 = (va17_0 - va30_0)/x0_1730
 
-        p3 = executor.submit(curr3, va08_1, va08_2, va08_0,
-                                    va30_1, va30_2, va30_0,
-                                    z_dash1_0830, y_dash_by_2_1_0830,
-                                    z_dash0_0830, y_dash_by_2_0_0830)
-        
-        ia1730_1, ia1730_2, ia1730_0 = p1.result()
-        ia2630_1, ia2630_2, ia2630_0 = p2.result()
-        ia0830_1, ia0830_2, ia0830_0 = p3.result() 
+    ia2630_1 = ((va26_1 - va30_1)/z_dash1_2630) - va30_1*y_dash_by_2_1_2630
+    ia2630_2 = ((va26_2 - va30_2)/z_dash1_2630) - va30_2*y_dash_by_2_1_2630
+    ia2630_0 = ((va26_0 - va30_0)/z_dash0_2630) - va30_0*y_dash_by_2_0_2630
 
-       
+    ia0830_1 = ((va08_1 - va30_1)/z_dash1_0830) - va30_1*y_dash_by_2_1_0830
+    ia0830_2 = ((va08_2 - va30_2)/z_dash1_0830) - va30_2*y_dash_by_2_1_0830
+    ia0830_0 = ((va08_0 - va30_0)/z_dash0_0830) - va30_0*y_dash_by_2_0_0830
+   
     #%%%%%%%%%% current summation %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     ia_1_30_ic = ia1730_1 + ia2630_1 + ia0830_1
     ia_2_30_ic = ia1730_2 + ia2630_2 + ia0830_2
@@ -231,13 +259,6 @@ def sfva(ss8_dataset, ss26_dataset, ss17_dataset,
 
     t6 = time.perf_counter_ns()
     dist_30 = (1/g1_3038)*cmath.atanh(z30)
-    # p = cmath.atanh(z30)
-    # q = cmath.log(((1+z30)*cmath.sqrt(1/(1-(z30*z30)))))
-    # r = 0.5*cmath.log((1 + z30)/(1 - z30))
-
-    # print("p = {}".format(p))
-    # print("q = {}".format(q))
-    # print("r = {}".format(r))
     t7 = time.perf_counter_ns()
 
     zberg_30 = z1_3038*zbase*dist_30
@@ -248,7 +269,7 @@ def sfva(ss8_dataset, ss26_dataset, ss17_dataset,
     t4 = time.perf_counter_ns()
     j = 0
     for i in range(1,8):
-        x = 5;
+        x = 5
         arr = [2, 1, 1, 6, 7, 8, 9]
         for k in range(len(arr)):
             if arr[k] > 0.8:
