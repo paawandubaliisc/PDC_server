@@ -176,14 +176,14 @@ class server:
                      '10.64.37.38' : 'ss65'}
 
         self.func_dict = {
-                          'ss8' : ss8_func,
-                          'ss26' : ss26_func,
-                          'ss17' : ss17_func,
-                          'ss30' : ss30_func,
-                          'ss38' : ss38_func,
-                          'ss37' : ss37_func,
-                          'ss65' : ss65_func,
-                          'pdc'  : pdc_func
+                          'ss8' : self.ss8_func,
+                          'ss26' : self.ss26_func,
+                          'ss17' : self.ss17_func,
+                          'ss30' : self.ss30_func,
+                          'ss38' : self.ss38_func,
+                          'ss37' : self.ss37_func,
+                          'ss65' : self.ss65_func,
+                          'pdc'  : self.pdc_func
                           }
         self.SERVER_ADDR = (self.SERVER, self.PORT)
         self.BUFFER = 1024
@@ -221,7 +221,7 @@ class server:
             ################################################
     
     def switch(self, sender, queue_set):
-        self.func_dict.get(sender)()
+        self.func_dict.get(sender)(queue_set)
 
 
     def start_gen_logging(self):
