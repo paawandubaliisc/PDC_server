@@ -6,7 +6,7 @@ import math
 def sfva(ss8_dataset, ss26_dataset, ss17_dataset,
          ss30_dataset, ss38_dataset, ss37_dataset,
          ss65_dataset):
-    
+
     t3 = time.perf_counter_ns()
     
     ####################bus 26 data
@@ -73,7 +73,6 @@ def sfva(ss8_dataset, ss26_dataset, ss17_dataset,
     zero_seq_resis_ratio = 10.458
 
     #%%%%%%%%%%%%%% line 26 to 30 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
     #%%%%%%%%% positive & negative sequence line parameters %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     r1_2630 = 0.00799
     x1_2630 = 0.086
@@ -221,6 +220,6 @@ def sfva(ss8_dataset, ss26_dataset, ss17_dataset,
     print(t4)
     print(t5)
     print(t2 - t3)
-    print(t5 - t3)
+    print("Total execution time in nanosec: {}".format(t5 - t3))
     print(t7 - t6)
     print("z30 = {} ".format(z30))
