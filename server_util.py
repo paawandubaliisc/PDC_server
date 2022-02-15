@@ -208,7 +208,6 @@ class server:
             if data_recv[25] == 1:
                 BFI = 1 
             sender = self.dict[cl_addr[0]]
-            MILSEC_CLIENT = int(data_recv[3] * 10**3 + data_recv[4] * 10**-3)
             CLIENT_TIME = data_recv[6]    
             queue_set = [sender, BFI, CLIENT_TIME, data_recv]
             print("Data, Sender: {}, client time: {}, server time: {}".format(sender, CLIENT_TIME, MILSEC_SERVER))
