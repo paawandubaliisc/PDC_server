@@ -101,6 +101,41 @@ x1_1730 = x1_pu_1730*zbase
 x2_1730 = x1_1730
 x0_1730 = x1_1730
 
+#%%%%%%%%%%%%%% current calculation 17 to 30 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+def curr1(va17_1, va17_2, va17_0,
+          va30_1, va30_2, va30_0,
+          x1_1730, x2_1730, x0_1730):
+
+    ia1730_1 = (va17_1 - va30_1)/x1_1730
+    ia1730_2 = (va17_2 - va30_2)/x2_1730
+    ia1730_0 = (va17_0 - va30_0)/x0_1730
+    return(ia1730_1, ia1730_2, ia1730_0)
+
+
+#%%%%%%%%%%%%% current calculation 26 to 30 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+def curr2(va26_1, va26_2, va26_0,
+          va30_1, va30_2, va30_0,
+          z_dash1_2630, y_dash_by_2_1_2630,
+          z_dash0_2630, y_dash_by_2_0_2630):
+
+    ia2630_1 = ((va26_1 - va30_1)/z_dash1_2630) - va30_1*y_dash_by_2_1_2630
+    ia2630_2 = ((va26_2 - va30_2)/z_dash1_2630) - va30_2*y_dash_by_2_1_2630
+    ia2630_0 = ((va26_0 - va30_0)/z_dash0_2630) - va30_0*y_dash_by_2_0_2630    
+    return(ia2630_1, ia2630_2, ia2630_0)
+
+
+#%%%%%%%%%%%% current calculation 08 to 30 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%    
+def curr3(va08_1, va08_2, va08_0,
+          va30_1, va30_2, va30_0,
+          z_dash1_0830, y_dash_by_2_1_0830,
+          z_dash0_0830, y_dash_by_2_0_0830):
+
+    ia0830_1 = ((va08_1 - va30_1)/z_dash1_0830) - va30_1*y_dash_by_2_1_0830
+    ia0830_2 = ((va08_2 - va30_2)/z_dash1_0830) - va30_2*y_dash_by_2_1_0830
+    ia0830_0 = ((va08_0 - va30_0)/z_dash0_0830) - va30_0*y_dash_by_2_0_0830
+    return(ia0830_1, ia0830_2, ia0830_0)
+
+
 
 def sfva(ss8_dataset, ss26_dataset, ss17_dataset,
          ss30_dataset, ss38_dataset, ss37_dataset,
@@ -162,22 +197,27 @@ def sfva(ss8_dataset, ss26_dataset, ss17_dataset,
 
     
     t1 = time.time_ns()
-    #%%%%%%%%%%%%%% current calculation 17 to 30 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    ia1730_1 = (va17_1 - va30_1)/x1_1730
-    ia1730_2 = (va17_2 - va30_2)/x2_1730
-    ia1730_0 = (va17_0 - va30_0)/x0_1730
-
-    #%%%%%%%%%%%%% current calculation 26 to 30 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    ia2630_1 = ((va26_1 - va30_1)/z_dash1_2630) - va30_1*y_dash_by_2_1_2630
-    ia2630_2 = ((va26_2 - va30_2)/z_dash1_2630) - va30_2*y_dash_by_2_1_2630
-    ia2630_0 = ((va26_0 - va30_0)/z_dash0_2630) - va30_0*y_dash_by_2_0_2630
-
-    #%%%%%%%%%%%% current calculation 08 to 30 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%    
-    ia0830_1 = ((va08_1 - va30_1)/z_dash1_0830) - va30_1*y_dash_by_2_1_0830
-    ia0830_2 = ((va08_2 - va30_2)/z_dash1_0830) - va30_2*y_dash_by_2_1_0830
-    ia0830_0 = ((va08_0 - va30_0)/z_dash0_0830) - va30_0*y_dash_by_2_0_0830
     
-    
+    with concurrent.futures.ThreadPoolExecutor as executor:
+        p1 = executor.submit(curr1, va17_1, va17_2, va17_0,
+                                    va30_1, va30_2, va30_0,
+                                    x1_1730, x2_1730, x0_1730)
+        
+        p2 = executor.submit(curr2, va26_1, va26_2, va26_0,
+                                    va30_1, va30_2, va30_0,
+                                    z_dash1_2630, y_dash_by_2_1_2630,
+                                    z_dash0_2630, y_dash_by_2_0_2630)
+
+        p3 = executor.submit(curr3, va08_1, va08_2, va08_0,
+                                    va30_1, va30_2, va30_0,
+                                    z_dash1_0830, y_dash_by_2_1_0830,
+                                    z_dash0_0830, y_dash_by_2_0_0830)
+        
+        ia1730_1, ia1730_2, ia1730_0 = p1.result()
+        ia2630_1, ia2630_2, ia2630_0 = p2.result()
+        ia0830_1, ia0830_2, ia0830_0 = p3.result() 
+
+       
     #%%%%%%%%%% current summation %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     ia_1_30_ic = ia1730_1 + ia2630_1 + ia0830_1
     ia_2_30_ic = ia1730_2 + ia2630_2 + ia0830_2
