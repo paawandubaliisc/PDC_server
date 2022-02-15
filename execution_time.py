@@ -195,9 +195,9 @@ def sfva(ss8_dataset, ss26_dataset, ss17_dataset,
     # q = cmath.log(((1+z30)*cmath.sqrt(1/(1-(z30*z30)))))
     # r = 0.5*cmath.log((1 + z30)/(1 - z30))
 
-    print("p = {}".format(p))
-    print("q = {}".format(q))
-    print("r = {}".format(r))
+    # print("p = {}".format(p))
+    # print("q = {}".format(q))
+    # print("r = {}".format(r))
     t7 = time.perf_counter_ns()
 
     zberg_30 = z1_3038*zbase*dist_30
