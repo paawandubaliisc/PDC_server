@@ -46,6 +46,8 @@ import time
 data_queue = queue()
 t1 = time.perf_counter_ns()
 data_queue.enqueue(set1)
+data_queue.show_queue()
+
 t2 = time.perf_counter_ns()
 print("enqueue time is {}", format(t2-t1))
 data_queue.enqueue(set2)

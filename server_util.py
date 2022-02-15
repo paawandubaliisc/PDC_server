@@ -4,7 +4,8 @@ import socket
 import struct
 import time
 from influxdb import InfluxDBClient
-from collections import deque
+from execution_time import *
+
 
 
 ################## Queue class
@@ -205,7 +206,7 @@ class server:
             msg, cl_addr = self.server.recvfrom(self.BUFFER)
             MILSEC_SERVER = self.current_time()[2]
             data_recv = self.msg_unpack(msg)
-            if data_recv[25] == 1:
+            if data_recv[25] == 1: 
                 BFI = 1 
             sender = self.dict[cl_addr[0]]
             CLIENT_TIME = data_recv[6]    
@@ -215,7 +216,18 @@ class server:
             msg_count = msg_count + 1
             if (msg_count % 7) == 0:
                 if BFI == 1:
-                    print("Trigger SFVA") 
+                    print("BFI Received\n")
+                    print("Triggered SFVA")
+                    (ss8_dataset, ss26_dataset, ss17_dataset,
+                    ss30_dataset, ss38_dataset, ss37_dataset,
+                    ss65_dataset) = self.sfva_enqueue()
+
+                    sfva(ss8_dataset, ss26_dataset, ss17_dataset,
+                    ss30_dataset, ss38_dataset, ss37_dataset,
+                    ss65_dataset)
+                    
+                    
+
                 print("Data set received\n\n")
                 
             ################################################
@@ -229,6 +241,7 @@ class server:
         self.ss37_queue = queue()
         self.ss65_queue = queue()
         self.pdc_queue = queue()
+        self.sfva_queue = queue()
 
     def switch(self, sender, queue_set):
         self.func_dict.get(sender)(queue_set)
@@ -253,8 +266,36 @@ class server:
                 self.client.write_to_db(json)
 
 
-          
-            
+
+
+
+    def sfva_enqueue(self):
+
+        ss8_dataset = self.ss8_queue.dequeue()
+        # self.sfva_queue.enqueue(ss8_dataset)
+
+        ss26_dataset = self.ss26_queue.dequeue()
+        # self.sfva_queue.enqueue(ss26_dataset)
+        
+        ss17_dataset = self.ss17_queue.dequeue()
+        # self.sfva_queue.enqueue(ss17_dataset)
+        
+        ss30_dataset = self.ss30_queue.dequeue()
+        # self.sfva_queue.enqueue(ss30_dataset)
+        
+        ss38_dataset = self.ss38_queue.dequeue()
+        # self.sfva_queue.enqueue(ss38_dataset)
+        
+        ss37_dataset = self.ss37_queue.dequeue()
+        # self.sfva_queue.enqueue(ss37_dataset)
+        
+        ss65_dataset = self.ss65_queue.dequeue()
+        # self.sfva_queue.enqueue(ss65_dataset)
+
+        return (ss8_dataset, ss26_dataset, ss17_dataset,
+                ss30_dataset, ss38_dataset, ss37_dataset,
+                ss65_dataset)
+
     def ss8_func(self, queue_set):
         self.ss8_queue.enqueue(queue_set)
         print("ss8 queued")
