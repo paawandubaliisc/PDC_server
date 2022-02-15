@@ -189,6 +189,7 @@ class server:
         self.BUFFER = 1024
         self.server = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
         self.gen_log = log(logger_name = "gen_log", logger_level = "INFO")
+        self.queue_init()
         #self.client = db("localhost", 8086, "pmu")
  
 
@@ -209,17 +210,27 @@ class server:
             sender = self.dict[cl_addr[0]]
             MILSEC_CLIENT = int(data_recv[3] * 10**3 + data_recv[4] * 10**-3)
             CLIENT_TIME = data_recv[6]    
-            queue_set = [sender, MILSEC_SERVER,data_recv]
+            queue_set = [sender, BFI, CLIENT_TIME, data_recv]
             print("Data, Sender: {}, client time: {}, server time: {}".format(sender, CLIENT_TIME, MILSEC_SERVER))
             self.switch(sender, queue_set)
             msg_count = msg_count + 1
             if (msg_count % 7) == 0:
-                print("Data set received")
                 if BFI == 1:
                     print("Trigger SFVA") 
-
+                print("Data set received\n\n")
+                
             ################################################
     
+    def queue_init(self):
+        ss8_queue = queue()
+        ss26_queue = queue()
+        ss17_queue = queue()
+        ss30_queue = queue()
+        ss38_queue = queue()
+        ss37_queue = queue()
+        ss65_queue = queue()
+        pdc_queue = queue()
+
     def switch(self, sender, queue_set):
         self.func_dict.get(sender)(queue_set)
 
@@ -246,28 +257,36 @@ class server:
           
             
     def ss8_func(self, queue_set):
-        print("ss8 executed")
+        self.ss8_queue.enqueue(queue_set)
+        print("ss8 queued")
 
     def ss26_func(self, queue_set):
-        print("ss26 executed")
+        self.ss26_queue.enqueue(queue_set)
+        print("ss26 queued")
 
     def ss17_func(self, queue_set):
-        print("ss17 executed")
+        self.ss17_queue.enqueue(queue_set)
+        print("ss17 queued")
 
     def ss30_func(self, queue_set):
-        print("ss30 executed")
+        self.ss30_queue.enqueue(queue_set)
+        print("ss30 queued")
 
     def ss38_func(self, queue_set):
-        print("ss38 executed")
+        self.ss38_queue.enqueue(queue_set)
+        print("ss38 queued")
 
     def ss37_func(self, queue_set):
-        print("ss37 executed")
+        self.ss37_queue.enqueue(queue_set)
+        print("ss37 queued")
 
     def ss65_func(self, queue_set):
-        print("ss65 executed")
+        self.ss65_queue.enqueue(queue_set)
+        print("ss65 queued")
 
     def pdc_func(self, queue_set):
-        print("pdc executed")
+        self.pdc_queue.enqueue(queue_set)
+        print("pdc queued")
 
     def current_time(self):
         CT = time.time()
