@@ -2,6 +2,94 @@ import time
 import cmath
 import math
 
+######################## general parameters
+kv_base = 345
+mva_base = 100
+
+zbase = ((kv_base)^2)/mva_base
+ybase = 1/zbase
+
+gamma_ratio = 1.392
+surge_ratio = 1.932
+zero_seq_resis_ratio = 10.458
+
+#%%%%%%%%%%%%%% line 26 to 30 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+#%%%%%%%%% positive & negative sequence line parameters %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+r1_2630 = 0.00799
+x1_2630 = 0.086
+b1_2630 = 0.908
+L = 1
+
+z1_2630 = complex(r1_2630,x1_2630)*zbase
+y1_2630 = complex(0,b1_2630)*ybase
+
+g1_2630 = cmath.sqrt(y1_2630 * z1_2630)
+g0_2630 = gamma_ratio * g1_2630
+
+zlump1_2630 = z1_2630*L
+ylump1_2630 = y1_2630*L
+
+z_dash1_2630 = zlump1_2630 * (cmath.sinh(g1_2630*L)/g1_2630*L)
+y_dash_by_2_1_2630 = (ylump1_2630/2) * (cmath.tanh(g1_2630*(L/2))/(g1_2630*(L/2)))
+
+#%%%%%%% zero sequence line parameters %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+b0_2630 = (gamma_ratio/surge_ratio)*b1_2630
+x0_2630 = gamma_ratio*surge_ratio*x1_2630
+r0_2630 = zero_seq_resis_ratio*r1_2630
+z0_2630 = complex(r0_2630,x0_2630)*zbase
+y0_2630 = complex(0,b0_2630*ybase)
+
+zlump0_2630 = z0_2630*L
+ylump0_2630 = y0_2630*L
+
+z_dash0_2630 = (zlump0_2630 * (cmath.sinh(g0_2630*L)/g0_2630*L))
+y_dash_by_2_0_2630 = ((ylump0_2630/2) * (cmath.tanh(g0_2630*(L/2))/(g0_2630*(L/2))))
+
+
+
+
+#line 08 to 30 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+#%%%%%%%%% positive & negative sequence line parameters %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+r1_0830 = 0.00431
+x1_0830 = 0.0504
+b1_0830 = 0.514
+L = 1
+
+z1_0830 = complex(r1_0830,x1_0830)*zbase
+y1_0830 = complex(0,b1_0830)*ybase
+
+g1_0830 = cmath.sqrt(y1_0830 * z1_0830)
+g0_0830 = gamma_ratio * g1_0830
+
+zlump1_0830 = z1_0830*L
+ylump1_0830 = y1_0830*L
+
+z_dash1_0830 = zlump1_0830 * (cmath.sinh(g1_0830*L)/g1_0830*L)
+y_dash_by_2_1_0830 = (ylump1_0830/2) * (cmath.tanh(g1_0830*(L/2))/(g1_0830*(L/2)))
+
+#%%%%%%% zero sequence line parameters %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+b0_0830 = (gamma_ratio/surge_ratio)*b1_0830
+x0_0830 = gamma_ratio*surge_ratio*x1_0830
+r0_0830 = zero_seq_resis_ratio*r1_0830
+z0_0830 = complex(r0_0830,x0_0830)*zbase
+y0_0830 = complex(0,b0_0830*ybase)
+
+zlump0_0830 = z0_0830*L
+ylump0_0830 = y0_0830*L
+
+z_dash0_0830 = (zlump0_0830 * (cmath.sinh(g0_0830*L)/g0_0830*L))
+y_dash_by_2_0_0830 = ((ylump0_0830/2) * (cmath.tanh(g0_0830*(L/2))/(g0_0830*(L/2))))
+
+
+
+#%%%%%%% Transformer between 17 and 30 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+x1_pu_1730 = complex(0,0.01)
+x1_1730 = x1_pu_1730*zbase
+
+x2_1730 = x1_1730
+x0_1730 = x1_1730
+
 
 def sfva(ss8_dataset, ss26_dataset, ss17_dataset,
          ss30_dataset, ss38_dataset, ss37_dataset,
@@ -61,94 +149,7 @@ def sfva(ss8_dataset, ss26_dataset, ss17_dataset,
     va17_2 = complex(va17_2_re,va17_2_im)*(345/143.52)
     va17_0 = complex(va17_0_re,va17_0_im)*(345/143.52)
 
-    ######################## general parameters
-    kv_base = 345
-    mva_base = 100
-
-    zbase = ((kv_base)^2)/mva_base
-    ybase = 1/zbase
-
-    gamma_ratio = 1.392
-    surge_ratio = 1.932
-    zero_seq_resis_ratio = 10.458
-
-    #%%%%%%%%%%%%%% line 26 to 30 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    #%%%%%%%%% positive & negative sequence line parameters %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    r1_2630 = 0.00799
-    x1_2630 = 0.086
-    b1_2630 = 0.908
-    L = 1
-
-    z1_2630 = complex(r1_2630,x1_2630)*zbase
-    y1_2630 = complex(0,b1_2630)*ybase
-
-    g1_2630 = cmath.sqrt(y1_2630 * z1_2630)
-    g0_2630 = gamma_ratio * g1_2630
-
-    zlump1_2630 = z1_2630*L
-    ylump1_2630 = y1_2630*L
-
-    z_dash1_2630 = zlump1_2630 * (cmath.sinh(g1_2630*L)/g1_2630*L)
-    y_dash_by_2_1_2630 = (ylump1_2630/2) * (cmath.tanh(g1_2630*(L/2))/(g1_2630*(L/2)))
-
-    #%%%%%%% zero sequence line parameters %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    b0_2630 = (gamma_ratio/surge_ratio)*b1_2630
-    x0_2630 = gamma_ratio*surge_ratio*x1_2630
-    r0_2630 = zero_seq_resis_ratio*r1_2630
-    z0_2630 = complex(r0_2630,x0_2630)*zbase
-    y0_2630 = complex(0,b0_2630*ybase)
-
-    zlump0_2630 = z0_2630*L
-    ylump0_2630 = y0_2630*L
-
-    z_dash0_2630 = (zlump0_2630 * (cmath.sinh(g0_2630*L)/g0_2630*L))
-    y_dash_by_2_0_2630 = ((ylump0_2630/2) * (cmath.tanh(g0_2630*(L/2))/(g0_2630*(L/2))))
-
-
-
-
-    #line 08 to 30 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-    #%%%%%%%%% positive & negative sequence line parameters %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    r1_0830 = 0.00431
-    x1_0830 = 0.0504
-    b1_0830 = 0.514
-    L = 1
-
-    z1_0830 = complex(r1_0830,x1_0830)*zbase
-    y1_0830 = complex(0,b1_0830)*ybase
-
-    g1_0830 = cmath.sqrt(y1_0830 * z1_0830)
-    g0_0830 = gamma_ratio * g1_0830
-
-    zlump1_0830 = z1_0830*L
-    ylump1_0830 = y1_0830*L
-
-    z_dash1_0830 = zlump1_0830 * (cmath.sinh(g1_0830*L)/g1_0830*L)
-    y_dash_by_2_1_0830 = (ylump1_0830/2) * (cmath.tanh(g1_0830*(L/2))/(g1_0830*(L/2)))
-
-    #%%%%%%% zero sequence line parameters %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    b0_0830 = (gamma_ratio/surge_ratio)*b1_0830
-    x0_0830 = gamma_ratio*surge_ratio*x1_0830
-    r0_0830 = zero_seq_resis_ratio*r1_0830
-    z0_0830 = complex(r0_0830,x0_0830)*zbase
-    y0_0830 = complex(0,b0_0830*ybase)
-
-    zlump0_0830 = z0_0830*L
-    ylump0_0830 = y0_0830*L
-
-    z_dash0_0830 = (zlump0_0830 * (cmath.sinh(g0_0830*L)/g0_0830*L))
-    y_dash_by_2_0_0830 = ((ylump0_0830/2) * (cmath.tanh(g0_0830*(L/2))/(g0_0830*(L/2))))
-
-
-
-    #%%%%%%% Transformer between 17 and 30 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    x1_pu_1730 = complex(0,0.01)
-    x1_1730 = x1_pu_1730*zbase
-
-    x2_1730 = x1_1730
-    x0_1730 = x1_1730
-
+    
 
     t1 = time.time_ns()
 
