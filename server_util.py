@@ -222,14 +222,14 @@ class server:
             ################################################
     
     def queue_init(self):
-        ss8_queue = queue()
-        ss26_queue = queue()
-        ss17_queue = queue()
-        ss30_queue = queue()
-        ss38_queue = queue()
-        ss37_queue = queue()
-        ss65_queue = queue()
-        pdc_queue = queue()
+        self.ss8_queue = queue()
+        self.ss26_queue = queue()
+        self.ss17_queue = queue()
+        self.ss30_queue = queue()
+        self.ss38_queue = queue()
+        self.ss37_queue = queue()
+        self.ss65_queue = queue()
+        self.pdc_queue = queue()
 
     def switch(self, sender, queue_set):
         self.func_dict.get(sender)(queue_set)
