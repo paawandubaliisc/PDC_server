@@ -191,9 +191,9 @@ def sfva(ss8_dataset, ss26_dataset, ss17_dataset,
 
     t6 = time.perf_counter_ns()
     dist_30 = (1/g1_3038)*cmath.atanh(z30)
-    p = cmath.atanh(z30)
-    q = cmath.log(((1+z30)*cmath.sqrt(1/(1-(z30*z30)))))
-    r = 0.5*cmath.log((1 + z30)/(1 - z30))
+    # p = cmath.atanh(z30)
+    # q = cmath.log(((1+z30)*cmath.sqrt(1/(1-(z30*z30)))))
+    # r = 0.5*cmath.log((1 + z30)/(1 - z30))
 
     print("p = {}".format(p))
     print("q = {}".format(q))
