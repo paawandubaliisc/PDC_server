@@ -5,6 +5,7 @@ import struct
 import time
 from influxdb import InfluxDBClient
 from execution_time import *
+from collections import deque
 
 
 
