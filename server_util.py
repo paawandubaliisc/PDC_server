@@ -175,14 +175,14 @@ class server:
                      '10.64.37.37' : 'ss37',
                      '10.64.37.38' : 'ss65'}
 
-        self.func_dict = {'ss8' : "ss8_func",
-                          'ss26' : "ss26_func",
-                          'ss17' : "ss17_func",
-                          'ss30' : "ss30_func",
-                          'ss38' : "ss38_func",
-                          'ss37' : "ss37_func",
-                          'ss65' : "ss65_func",
-                          'pdc'  : "pdc_func"}
+        self.func_dict = {'ss8' : 'ss8_func',
+                          'ss26' : 'ss26_func',
+                          'ss17' : 'ss17_func',
+                          'ss30' : 'ss30_func',
+                          'ss38' : 'ss38_func',
+                          'ss37' : 'ss37_func',
+                          'ss65' : 'ss65_func',
+                          'pdc'  : 'pdc_func'}
         self.SERVER_ADDR = (self.SERVER, self.PORT)
         self.BUFFER = 1024
         self.server = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
