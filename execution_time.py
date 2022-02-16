@@ -1,7 +1,7 @@
 import time
 import cmath
 import math
-import concurrent.futures
+
 
 ######################## general parameters
 kv_base = 345
@@ -50,7 +50,6 @@ y_dash_by_2_0_2630 = ((ylump0_2630/2) * (cmath.tanh(g0_2630*(L/2))/(g0_2630*(L/2
 
 
 #line 08 to 30 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
 #%%%%%%%%% positive & negative sequence line parameters %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 r1_0830 = 0.00431
 x1_0830 = 0.0504
@@ -93,48 +92,65 @@ Zc1_3038 = zbase * Zc1_3038_pu
 g1_3038 = cmath.sqrt(y1_3038 * z1_3038)
 L = 1
 
+# %%%%%%%% line parameters 38 to 30 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+r1_3830 = 0.00464
+x1_3830 = 0.054
+b1_3830 = 0.422
+z1_3830 = complex(r1_3830, x1_3830)
+y1_3830 = complex(0, b1_3830)
+Zc1_3830_pu = cmath.sqrt(z1_3830/y1_3830)
+Zc1_3830 = zbase * Zc1_3830_pu
+g1_3830 = cmath.sqrt(y1_3830 * z1_3830)
+L = 1
+
+
+# %%%%%%%%%%%%%% line 65 to 38 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+# %%%%%%%%% positive & negative sequence line parameters %%%%%%%%%%%%%%%%%%%
+r1_6538 = 0.00901
+x1_6538 = 0.0986
+b1_6538 = 1.046
+L = 1
+
+z1_6538 = complex(r1_6538, x1_6538)*zbase
+y1_6538 = complex(0, b1_6538)*ybase
+
+g1_6538 = cmath.sqrt(y1_6538 * z1_6538)
+g0_6538 = gamma_ratio * g1_6538
+
+zlump1_6538 = z1_6538*L
+ylump1_6538 = y1_6538*L
+
+z_dash1_6538 = zlump1_6538 * (cmath.sinh(g1_6538*L)/g1_6538*L)
+y_dash_by_2_1_6538 = (ylump1_6538/2) * (cmath.tanh(g1_6538*(L/2))/(g1_6538*(L/2)))
+
+# %%%%%%% zero sequence line parameters %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+b0_6538 = (gamma_ratio/surge_ratio)*b1_6538
+x0_6538 = gamma_ratio*surge_ratio*x1_6538
+r0_6538 = zero_seq_resis_ratio*r1_6538
+z0_6538 = complex(r0_6538, x0_6538)*zbase
+y0_6538 = complex(0,b0_6538)*ybase
+
+zlump0_6538 = z0_6538*L
+ylump0_6538 = y0_6538*L
+
+z_dash0_6538 = (zlump0_6538 * (cmath.sinh(g0_6538*L)/g0_6538*L))
+y_dash_by_2_0_6538 = ((ylump0_6538/2) * (cmath.tanh(g0_6538*(L/2))/(g0_6538*(L/2))))
+
+
 
 #%%%%%%% Transformer between 17 and 30 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-x1_pu_1730 = complex(0,0.01)
+x1_pu_1730 = complex(0,0.0388)
 x1_1730 = x1_pu_1730*zbase
 
 x2_1730 = x1_1730
 x0_1730 = x1_1730
 
-#%%%%%%%%%%%%%% current calculation 17 to 30 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-def curr1(va17_1, va17_2, va17_0,
-          va30_1, va30_2, va30_0,
-          x1_1730, x2_1730, x0_1730):
+# %%%%%%% Transformer between 37 and 38 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+x1_pu_3738 = complex(0,0.0375)
+x1_3738 = x1_pu_3738*zbase
 
-    ia1730_1 = (va17_1 - va30_1)/x1_1730
-    ia1730_2 = (va17_2 - va30_2)/x2_1730
-    ia1730_0 = (va17_0 - va30_0)/x0_1730
-    return(ia1730_1, ia1730_2, ia1730_0)
-
-
-#%%%%%%%%%%%%% current calculation 26 to 30 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-def curr2(va26_1, va26_2, va26_0,
-          va30_1, va30_2, va30_0,
-          z_dash1_2630, y_dash_by_2_1_2630,
-          z_dash0_2630, y_dash_by_2_0_2630):
-
-    ia2630_1 = ((va26_1 - va30_1)/z_dash1_2630) - va30_1*y_dash_by_2_1_2630
-    ia2630_2 = ((va26_2 - va30_2)/z_dash1_2630) - va30_2*y_dash_by_2_1_2630
-    ia2630_0 = ((va26_0 - va30_0)/z_dash0_2630) - va30_0*y_dash_by_2_0_2630    
-    return(ia2630_1, ia2630_2, ia2630_0)
-
-
-#%%%%%%%%%%%% current calculation 08 to 30 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%    
-def curr3(va08_1, va08_2, va08_0,
-          va30_1, va30_2, va30_0,
-          z_dash1_0830, y_dash_by_2_1_0830,
-          z_dash0_0830, y_dash_by_2_0_0830):
-
-    ia0830_1 = ((va08_1 - va30_1)/z_dash1_0830) - va30_1*y_dash_by_2_1_0830
-    ia0830_2 = ((va08_2 - va30_2)/z_dash1_0830) - va30_2*y_dash_by_2_1_0830
-    ia0830_0 = ((va08_0 - va30_0)/z_dash0_0830) - va30_0*y_dash_by_2_0_0830
-    return(ia0830_1, ia0830_2, ia0830_0)
-
+x2_3738 = x1_3738
+x0_3738 = x1_3738
 
 
 def sfva(ss8_dataset, ss26_dataset, ss17_dataset,
@@ -233,17 +249,85 @@ def sfva(ss8_dataset, ss26_dataset, ss17_dataset,
     va17_2 = complex(va17_2_re,va17_2_im)*(345/143.52)
     va17_0 = complex(va17_0_re,va17_0_im)*(345/143.52)
 
-    
-    t1 = time.time_ns()
-    
+
+    #%%%%%%%% bus 37 voltage 
+    #%0.54,-22.3502138188,-65.5284514209,1.53422418138,8.12634746772,7.44847631993,14.4354755641
+
+    data37 = ss37_dataset[3]
+    va37_1_re = data37[3]
+    va37_1_im = data37[4]
+    va37_2_re = data37[5]
+    va37_2_im = data37[6]
+    va37_0_re = data37[7]
+    va37_0_im = data37[8]
+
+    # va37_1_re = -22.019240975
+    # va37_1_im = -67.0119480817
+    # va37_2_re = 2.55176212101
+    # va37_2_im = 6.49412356682
+    # va37_0_re = 9.08829606037
+    # va37_0_im = 11.5209101607
+
+    va37_1 = complex(va37_1_re,va37_1_im)*(345/142.83)
+    va37_2 = complex(va37_2_re,va37_2_im)*(345/142.83)
+    va37_0 = complex(va37_0_re,va37_0_im)*(345/142.83)
+
+    # %%%%%%% bus 38 voltage
+    # %0.54,-51.5261770653,-153.222847839,3.49461091354,23.1938291241,17.8841457017,39.3614296488
+
+    data38 = ss38_dataset[3]
+    va38_1_re = data38[3]
+    va38_1_im = data38[4]
+    va38_2_re = data38[5]
+    va38_2_im = data38[6]
+    va38_0_re = data38[7]
+    va38_0_im = data38[8]
+
+    # va38_1_re = -45.2195260092
+    # va38_1_im = -152.322880038
+    # va38_2_re = 7.87096687613
+    # va38_2_im = 27.2877926606
+    # va38_0_re = 25.6216617923
+    # va38_0_im = 43.8927338323
+
+    va38_1 = complex(va38_1_re, va38_1_im)
+    va38_2 = complex(va38_2_re, va38_2_im)
+    va38_0 = complex(va38_0_re, va38_0_im)
+
+
+    # %%%%%%% bus 65 voltage
+    # %0.54,-16.1225787535,-191.962668361,0.200981046269,4.77625827918,-0.827590499322,3.07543614249
+
+    data65 = ss65_dataset[3]
+    va65_1_re = data65[3]
+    va65_1_im = data65[4]
+    va65_2_re = data65[5]
+    va65_2_im = data65[6]
+    va65_0_re = data65[7]
+    va65_0_im = data65[8]
+
+    # va65_1_re = -16.4416491016
+    # va65_1_im = -191.876483156
+    # va65_2_re = 0.917102907633
+    # va65_2_im = 5.88654870358
+    # va65_0_re = -0.623428133184
+    # va65_0_im = 3.71598605538
+
+    va65_1 = complex(va65_1_re, va65_1_im)
+    va65_2 = complex(va65_2_re, va65_2_im)
+    va65_0 = complex(va65_0_re, va65_0_im)
+
+    #%%%%%%%%%%%%%% current calculation 17 to 30 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     ia1730_1 = (va17_1 - va30_1)/x1_1730
     ia1730_2 = (va17_2 - va30_2)/x2_1730
     ia1730_0 = (va17_0 - va30_0)/x0_1730
 
+    #%%%%%%%%%%%%% current calculation 26 to 30 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     ia2630_1 = ((va26_1 - va30_1)/z_dash1_2630) - va30_1*y_dash_by_2_1_2630
     ia2630_2 = ((va26_2 - va30_2)/z_dash1_2630) - va30_2*y_dash_by_2_1_2630
     ia2630_0 = ((va26_0 - va30_0)/z_dash0_2630) - va30_0*y_dash_by_2_0_2630
 
+    #%%%%%%%%%%%% current calculation 08 to 30 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%    
     ia0830_1 = ((va08_1 - va30_1)/z_dash1_0830) - va30_1*y_dash_by_2_1_0830
     ia0830_2 = ((va08_2 - va30_2)/z_dash1_0830) - va30_2*y_dash_by_2_1_0830
     ia0830_0 = ((va08_0 - va30_0)/z_dash0_0830) - va30_0*y_dash_by_2_0_0830
@@ -253,37 +337,49 @@ def sfva(ss8_dataset, ss26_dataset, ss17_dataset,
     ia_2_30_ic = ia1730_2 + ia2630_2 + ia0830_2
     ia_0_30_ic = ia1730_0 + ia2630_0 + ia0830_0
 
+    ##### ia30 and va30 calculation
     ia_30_ic = ia_1_30_ic + ia_2_30_ic + ia_0_30_ic
-
-
     va30 = va30_1 + va30_2 + va30_0
+    
+    ##### impedance calculation
     z30 = va30/((ia_30_ic + 1.6893*ia_0_30_ic)*Zc1_3038)
-
-    t6 = time.perf_counter_ns()
     dist_30 = (1/g1_3038)*cmath.atanh(z30)
-    t7 = time.perf_counter_ns()
-
     zberg_30 = z1_3038*zbase*dist_30
-
     zline = z1_3038*zbase*L
     fault_dist_from_30  = ((zberg_30).imag/(zline).imag)*100
-    t2 = time.perf_counter_ns()
-    t4 = time.perf_counter_ns()
-    j = 0
-    for i in range(1,8):
-        x = 5
-        arr = [2, 1, 1, 6, 7, 8, 9]
-        for k in range(len(arr)):
-            if arr[k] > 0.8:
-                j = j + 1
+    
+
+    
+    # %%%%%%%%%%%%%% current calculation 37 to 38 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    ia3738_1 = (va37_1 - va38_1)/x1_3738
+    ia3738_2 = (va37_2 - va38_2)/x2_3738
+    ia3738_0 = (va37_0 - va38_0)/x0_3738
+
+
+    # %%%%%%%%%%%%% current calculation 65 to 38 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    ia6538_1 = ((va65_1 - va38_1)/z_dash1_6538) - va38_1*y_dash_by_2_1_6538
+    ia6538_2 = ((va65_2 - va38_2)/z_dash1_6538) - va38_2*y_dash_by_2_1_6538
+    ia6538_0 = ((va65_0 - va38_0)/z_dash0_6538) - va38_0*y_dash_by_2_0_6538
+
+
+    # %%%%%%%%%% current summation %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    ia_1_38_ic = ia6538_1 + ia3738_1
+    ia_2_38_ic = ia6538_2 + ia3738_2
+    ia_0_38_ic = ia6538_0 + ia3738_0
+
+    ##### ia38 and va38 calculation
+    ia_38_ic = ia_1_38_ic + ia_2_38_ic + ia_0_38_ic
+    va38 = va38_1 + va38_2 + va38_0; 
+
+    ##### impedance calculation
+    z38 = va38/((ia_38_ic + 1.6893*ia_0_38_ic)*Zc1_3830)
+    dist_38 = (1/g1_3830)*cmath.atanh(z38)
+    zberg_38 = z1_3830*zbase*dist_38
+    zline = z1_3830*zbase*L
+    fault_dist_from_38  = (((zberg_38).imag)/((zline).imag))*100
+
     t5 = time.perf_counter_ns()
-    print(k)
-    print(fault_dist_from_30)
-    print(t3)
-    print(t2)
-    print(t4)
-    print(t5)
-    print(t2 - t3)
+    
+    print("Fault distance from bus 30: {}".format(fault_dist_from_30))
+    print("Fault distance from bus 38: {}".format(fault_dist_from_38))
     print("Total execution time in nanosec: {}".format(t5 - t3))
-    print(t7 - t6)
-    print("z30 = {} ".format(z30))
