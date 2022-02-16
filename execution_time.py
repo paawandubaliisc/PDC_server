@@ -1,7 +1,5 @@
 import time
 import cmath
-import math
-
 
 ######################## general parameters
 kv_base = 345
@@ -168,11 +166,6 @@ def sfva(ss8_dataset, ss26_dataset, ss17_dataset,
     va26_0_re = data26[7]
     va26_0_im = data26[8]
 
-
-    # data[3], data[4], data[5],
-    # data[6], data[7], data[8],
-
-
     # va26_1_re = -78.1044890236
     # va26_1_im = -151.493586093
     # va26_2_re = 4.35542605871
@@ -181,6 +174,7 @@ def sfva(ss8_dataset, ss26_dataset, ss17_dataset,
     # va26_0_im = 22.5999966622
 
     va26_1 = complex(va26_1_re,va26_1_im)
+    va26_1_mag = abs(va26_1)/199.18584
     va26_2 = complex(va26_2_re,va26_2_im)
     va26_0 = complex(va26_0_re,va26_0_im)
 
@@ -202,6 +196,7 @@ def sfva(ss8_dataset, ss26_dataset, ss17_dataset,
     # va30_0_im = 38.544720748
 
     va30_1 = complex(va30_1_re,va30_1_im)
+    va30_1_mag = abs(va30_1)/199.18584
     va30_2 = complex(va30_2_re,va30_2_im)
     va30_0 = complex(va30_0_re,va30_0_im)
 
@@ -225,6 +220,7 @@ def sfva(ss8_dataset, ss26_dataset, ss17_dataset,
     # va08_0_im = 19.9964231992
 
     va08_1 = complex(va08_1_re,va08_1_im)
+    va08_1_mag = abs(va08_1)/199.18584
     va08_2 = complex(va08_2_re,va08_2_im)
     va08_0 = complex(va08_0_re,va08_0_im)
 
@@ -246,6 +242,7 @@ def sfva(ss8_dataset, ss26_dataset, ss17_dataset,
 
 
     va17_1 = complex(va17_1_re,va17_1_im)*(345/143.52)
+    va17_1_mag = abs(va17_1)/79.67433
     va17_2 = complex(va17_2_re,va17_2_im)*(345/143.52)
     va17_0 = complex(va17_0_re,va17_0_im)*(345/143.52)
 
@@ -269,6 +266,7 @@ def sfva(ss8_dataset, ss26_dataset, ss17_dataset,
     # va37_0_im = 11.5209101607
 
     va37_1 = complex(va37_1_re,va37_1_im)*(345/142.83)
+    va37_1_mag = abs(va37_1)/79.67433
     va37_2 = complex(va37_2_re,va37_2_im)*(345/142.83)
     va37_0 = complex(va37_0_re,va37_0_im)*(345/142.83)
 
@@ -291,6 +289,7 @@ def sfva(ss8_dataset, ss26_dataset, ss17_dataset,
     # va38_0_im = 43.8927338323
 
     va38_1 = complex(va38_1_re, va38_1_im)
+    va38_1_mag = abs(va38_1)/199.18584
     va38_2 = complex(va38_2_re, va38_2_im)
     va38_0 = complex(va38_0_re, va38_0_im)
 
@@ -314,9 +313,55 @@ def sfva(ss8_dataset, ss26_dataset, ss17_dataset,
     # va65_0_im = 3.71598605538
 
     va65_1 = complex(va65_1_re, va65_1_im)
+    va65_1_mag = abs(va65_1)/199.18584
     va65_2 = complex(va65_2_re, va65_2_im)
     va65_0 = complex(va65_0_re, va65_0_im)
 
+    ############### FDA execution
+
+    bus_dict = {
+                va26_1_mag : 'Bus 26',
+                va30_1_mag : 'Bus 30',
+                va08_1_mag : 'Bus 08',
+                va17_1_mag : 'Bus 17',
+                va37_1_mag : 'Bus 37',
+                va38_1_mag : 'Bus 38',
+                va65_1_mag : 'Bus 65'
+    }
+
+    pos_mag_bus_vol = [
+                       va26_1_mag,
+                       va30_1_mag,
+                       va08_1_mag,
+                       va17_1_mag,
+                       va37_1_mag,
+                       va38_1_mag,
+                       va65_1_mag  
+                    ]
+    
+    eligible_relays = 28
+    for relay_count in range(eligible_relays):
+        fault_count = 0
+        
+        for i in pos_mag_bus_vol:
+            if i < 0.95:
+                fault_count = fault_count + 1
+                if eligible_relays == 27:
+                    print("Fault detected at {}", format(bus_dict[i]))
+        
+        if fault_count > 4:
+            if eligible_relays == 27:
+                print("Fault observed by {} buses. Hence, FDA votes 1".format(fault_count))
+                FDA = 1
+        else:
+            if eligible_relays == 27:
+                print("Fault observed by {} buses. Hence, FDA votes 0".format(fault_count))
+                FDA = 0
+        
+        relay_count = relay_count - 1
+
+
+    ############### FCA execution
     #%%%%%%%%%%%%%% current calculation 17 to 30 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     ia1730_1 = (va17_1 - va30_1)/x1_1730
     ia1730_2 = (va17_2 - va30_2)/x2_1730
