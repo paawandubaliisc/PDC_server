@@ -346,19 +346,17 @@ def sfva(ss8_dataset, ss26_dataset, ss17_dataset,
         for i in pos_mag_bus_vol:
             if i < 0.95:
                 fault_count = fault_count + 1
-                if eligible_relays == 27:
+                if relay_count == 27:
                     print("Fault detected at {}", format(bus_dict[i]))
         
         if fault_count > 4:
-            if eligible_relays == 27:
+            if relay_count == 27:
                 print("Fault observed by {} buses. Hence, FDA votes 1".format(fault_count))
                 FDA = 1
         else:
-            if eligible_relays == 27:
+            if relay_count == 27:
                 print("Fault observed by {} buses. Hence, FDA votes 0".format(fault_count))
                 FDA = 0
-        
-        relay_count = relay_count - 1
 
 
     ############### FCA execution
