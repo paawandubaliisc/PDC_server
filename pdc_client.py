@@ -41,7 +41,7 @@ dict = {'10.64.37.31' : 'Bus 08',
 
 def open_workbook(file_name, sheet_name):
     print(file_name, sheet_name)
-    workbook = openpyxl.load_workbook("{}.xlsx".format(file_name))
+    workbook = openpyxl.load_workbook("{}.xls".format(file_name))
     sheet1 = workbook['{}'.format(sheet_name)]
     row = sheet1.max_row
     col = sheet1.max_column
