@@ -303,31 +303,31 @@ class server:
     def sfva_enqueue(self):
 
         ss8_dataset = self.ss8_queue.dequeue()
-        print("ss8_dataset: {}".format(ss8_dataset))
+        # print("ss8_dataset: {}".format(ss8_dataset))
         # self.sfva_queue.enqueue(ss8_dataset)
 
         ss26_dataset = self.ss26_queue.dequeue()
-        print("ss26_dataset: {}".format(ss26_dataset))
+        # print("ss26_dataset: {}".format(ss26_dataset))
         # self.sfva_queue.enqueue(ss26_dataset)
         
         ss17_dataset = self.ss17_queue.dequeue()
-        print("ss17_dataset: {}".format(ss17_dataset))
+        # print("ss17_dataset: {}".format(ss17_dataset))
         # self.sfva_queue.enqueue(ss17_dataset)
         
         ss30_dataset = self.ss30_queue.dequeue()
-        print("ss30_dataset: {}".format(ss30_dataset))
+        # print("ss30_dataset: {}".format(ss30_dataset))
         # self.sfva_queue.enqueue(ss30_dataset)
         
         ss38_dataset = self.ss38_queue.dequeue()
-        print("ss38_dataset: {}".format(ss38_dataset))
+        # print("ss38_dataset: {}".format(ss38_dataset))
         # self.sfva_queue.enqueue(ss38_dataset)
         
         ss37_dataset = self.ss37_queue.dequeue()
-        print("ss37_dataset: {}".format(ss37_dataset))
+        # print("ss37_dataset: {}".format(ss37_dataset))
         # self.sfva_queue.enqueue(ss37_dataset)
         
         ss65_dataset = self.ss65_queue.dequeue()
-        print("ss65_dataset: {}".format(ss65_dataset))
+        # print("ss65_dataset: {}".format(ss65_dataset))
         # self.sfva_queue.enqueue(ss65_dataset)
 
         return (ss8_dataset, ss26_dataset, ss17_dataset,

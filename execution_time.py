@@ -167,12 +167,12 @@ def sfva(ss8_dataset, ss26_dataset, ss17_dataset,
     va26_0_re = data26[4]
     va26_0_im = data26[5]
 
-    print("v26_pos_re: {}".format(data26[0]))
-    print("v26_pos_im: {}".format(data26[1]))
-    print("v26_neg_re: {}".format(data26[2]))
-    print("v26_neg_im: {}".format(data26[3]))
-    print("v26_zero_re: {}".format(data26[4]))
-    print("v26_zero_im: {}".format(data26[5]))
+    # print("v26_pos_re: {}".format(data26[0]))
+    # print("v26_pos_im: {}".format(data26[1]))
+    # print("v26_neg_re: {}".format(data26[2]))
+    # print("v26_neg_im: {}".format(data26[3]))
+    # print("v26_zero_re: {}".format(data26[4]))
+    # print("v26_zero_im: {}".format(data26[5]))
     # data26 = ss26_dataset[3]
     # print("data26 is: {}".format(data26))
     # va26_1_re = data26[3]
