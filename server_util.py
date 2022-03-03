@@ -234,14 +234,14 @@ class server:
             print("data_recv[22]: {}".format(data_recv[22]))
             print("data_recv[23]: {}".format(data_recv[23]))
             print("data_recv[24]: {}".format(data_recv[24]))
-            print("data_recv[25]: {}".format(data_recv[25]))
+            print("data_recv[25]: {}\n".format(data_recv[25]))
             if data_recv[25] == 1: 
                 BFI = 1 
             sender = self.dict[cl_addr[0]]
             CLIENT_TIME = data_recv[6]    
-            # queue_set = [sender, BFI, CLIENT_TIME, data_recv]
+            queue_set = [data_recv[7], data_recv[8], data_recv[9], data_recv[10], data_recv[11], data_recv[12]]
             print("Data, Sender: {}, client time: {}, server time: {}".format(sender, CLIENT_TIME, MILSEC_SERVER))
-            self.switch(sender, data_recv)
+            self.switch(sender, queue_set)
             msg_count = msg_count + 1
             if (msg_count % 7) == 0:
                 if BFI == 1:
@@ -257,7 +257,7 @@ class server:
                     
                     
 
-                print("Data set received\n\n")
+                print("Data set received\n\n\n")
                 
             ################################################
     

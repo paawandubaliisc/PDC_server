@@ -160,12 +160,12 @@ def sfva(ss8_dataset, ss26_dataset, ss17_dataset,
     ####################bus 26 data
     data26 = ss26_dataset
     # print("data26 is: {}".format(data26))
-    va26_1_re = data26[7]
-    va26_1_im = data26[8]
-    va26_2_re = data26[9]
-    va26_2_im = data26[10]
-    va26_0_re = data26[11]
-    va26_0_im = data26[12]
+    va26_1_re = data26[0]
+    va26_1_im = data26[1]
+    va26_2_re = data26[2]
+    va26_2_im = data26[3]
+    va26_0_re = data26[4]
+    va26_0_im = data26[5]
 
     print("v26_pos_re: {}".format(data26[7]))
     print("v26_pos_im: {}".format(data26[8]))
@@ -196,12 +196,12 @@ def sfva(ss8_dataset, ss26_dataset, ss17_dataset,
     ##################### bus 30 data
     data30 = ss30_dataset
     # print("data30 is: {}".format(data30))
-    va30_1_re = data30[7]
-    va30_1_im = data30[8]
-    va30_2_re = data30[9]
-    va30_2_im = data30[10]
-    va30_0_re = data30[11]
-    va30_0_im = data30[12]
+    va30_1_re = data30[0]
+    va30_1_im = data30[1]
+    va30_2_re = data30[2]
+    va30_2_im = data30[3]
+    va30_0_re = data30[4]
+    va30_0_im = data30[5]
 
     # data30 = ss30_dataset[3]
     # print("data30 is: {}".format(data30))
@@ -229,12 +229,12 @@ def sfva(ss8_dataset, ss26_dataset, ss17_dataset,
     ######################## bus 08 data
     data8 = ss8_dataset
     # print("data8 is: {}".format(data8))
-    va08_1_re = data8[7]
-    va08_1_im = data8[8]
-    va08_2_re = data8[9]
-    va08_2_im = data8[10]
-    va08_0_re = data8[11]
-    va08_0_im = data8[12]
+    va08_1_re = data8[0]
+    va08_1_im = data8[1]
+    va08_2_re = data8[2]
+    va08_2_im = data8[3]
+    va08_0_re = data8[4]
+    va08_0_im = data8[5]
 
     # data8 = ss8_dataset[3]
     # print("data8 is: {}".format(data8))
@@ -260,12 +260,12 @@ def sfva(ss8_dataset, ss26_dataset, ss17_dataset,
     ######################## bus 17 data
     data17 = ss17_dataset
     # print("data17 is: {}".format(data17))
-    va17_1_re = data17[7]
-    va17_1_im = data17[8]
-    va17_2_re = data17[9]
-    va17_2_im = data17[10]
-    va17_0_re = data17[11]
-    va17_0_im = data17[12]
+    va17_1_re = data17[0]
+    va17_1_im = data17[1]
+    va17_2_re = data17[2]
+    va17_2_im = data17[3]
+    va17_0_re = data17[4]
+    va17_0_im = data17[5]
 
     # data17 = ss17_dataset[3]
     # print("data17 is: {}".format(data17))
@@ -295,12 +295,12 @@ def sfva(ss8_dataset, ss26_dataset, ss17_dataset,
 
     data37 = ss37_dataset
     # print("data37 is: {}".format(data37))
-    va37_1_re = data37[7]
-    va37_1_im = data37[8]
-    va37_2_re = data37[9]
-    va37_2_im = data37[10]
-    va37_0_re = data37[11]
-    va37_0_im = data37[12]
+    va37_1_re = data37[0]
+    va37_1_im = data37[1]
+    va37_2_re = data37[2]
+    va37_2_im = data37[3]
+    va37_0_re = data37[4]
+    va37_0_im = data37[5]
 
     # data37 = ss37_dataset[3]
     # print("data37 is: {}".format(data37))
@@ -328,12 +328,12 @@ def sfva(ss8_dataset, ss26_dataset, ss17_dataset,
 
     data38 = ss38_dataset
     # print("data38 is: {}".format(data38))
-    va38_1_re = data38[7]
-    va38_1_im = data38[8]
-    va38_2_re = data38[9]
-    va38_2_im = data38[10]
-    va38_0_re = data38[11]
-    va38_0_im = data38[12]
+    va38_1_re = data38[0]
+    va38_1_im = data38[1]
+    va38_2_re = data38[2]
+    va38_2_im = data38[3]
+    va38_0_re = data38[4]
+    va38_0_im = data38[5]
 
     # data38 = ss38_dataset[3]
     # print("data38 is: {}".format(data38))
@@ -362,12 +362,12 @@ def sfva(ss8_dataset, ss26_dataset, ss17_dataset,
 
     data65 = ss65_dataset
     # print("data65 is: {}".format(data65))
-    va65_1_re = data65[7]
-    va65_1_im = data65[8]
-    va65_2_re = data65[9]
-    va65_2_im = data65[10]
-    va65_0_re = data65[11]
-    va65_0_im = data65[12]
+    va65_1_re = data65[0]
+    va65_1_im = data65[1]
+    va65_2_re = data65[2]
+    va65_2_im = data65[3]
+    va65_0_re = data65[4]
+    va65_0_im = data65[5]
 
     # data65 = ss65_dataset[3]
     # print("data65 is: {}".format(data65))
