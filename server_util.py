@@ -241,6 +241,7 @@ class server:
             CLIENT_TIME = data_recv[6]    
             queue_set = [data_recv[7], data_recv[8], data_recv[9], data_recv[10], data_recv[11], data_recv[12]]
             print("Data, Sender: {}, client time: {}, server time: {}".format(sender, CLIENT_TIME, MILSEC_SERVER))
+            print(queue_set)
             self.switch(sender, queue_set)
             msg_count = msg_count + 1
             if (msg_count % 7) == 0:
