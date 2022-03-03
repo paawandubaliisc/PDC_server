@@ -158,7 +158,7 @@ def sfva(ss8_dataset, ss26_dataset, ss17_dataset,
     t3 = time.perf_counter_ns()
     
     ####################bus 26 data
-    data26 = ss26_dataset[3]
+    data26 = ss26_dataset[4]
     print("data26 is: {}".format(data26))
     va26_1_re = data26[3]
     va26_1_im = data26[4]
