@@ -207,6 +207,34 @@ class server:
             msg, cl_addr = self.server.recvfrom(self.BUFFER)
             MILSEC_SERVER = self.current_time()[2]
             data_recv = self.msg_unpack(msg)
+            sender = self.dict[cl_addr[0]]
+            print("sender: {}".format(sender))
+            print("data_recv[0]: {}".format(data_recv[0]))
+            print("data_recv[1]: {}".format(data_recv[1]))
+            print("data_recv[2]: {}".format(data_recv[2]))
+            print("data_recv[3]: {}".format(data_recv[3]))
+            print("data_recv[4]: {}".format(data_recv[4]))
+            print("data_recv[5]: {}".format(data_recv[5]))
+            print("data_recv[6]: {}".format(data_recv[6]))
+            print("data_recv[7]: {}".format(data_recv[7]))
+            print("data_recv[8]: {}".format(data_recv[8]))
+            print("data_recv[9]: {}".format(data_recv[9]))
+            print("data_recv[10]: {}".format(data_recv[10]))
+            print("data_recv[11]: {}".format(data_recv[11]))
+            print("data_recv[12]: {}".format(data_recv[12]))
+            print("data_recv[13]: {}".format(data_recv[13]))
+            print("data_recv[14]: {}".format(data_recv[14]))
+            print("data_recv[15]: {}".format(data_recv[15]))
+            print("data_recv[16]: {}".format(data_recv[16]))
+            print("data_recv[17]: {}".format(data_recv[17]))
+            print("data_recv[18]: {}".format(data_recv[18]))
+            print("data_recv[19]: {}".format(data_recv[19]))
+            print("data_recv[20]: {}".format(data_recv[20]))
+            print("data_recv[21]: {}".format(data_recv[21]))
+            print("data_recv[22]: {}".format(data_recv[22]))
+            print("data_recv[23]: {}".format(data_recv[23]))
+            print("data_recv[24]: {}".format(data_recv[24]))
+            print("data_recv[25]: {}".format(data_recv[25]))
             if data_recv[25] == 1: 
                 BFI = 1 
             sender = self.dict[cl_addr[0]]
@@ -337,7 +365,7 @@ class server:
         return SOC_SERVER, FRACSEC_SERVER, MILSEC_SERVER
         
     def msg_unpack(self,msg):
-        data_recv = struct.unpack('!3H2IH13d6Ii',msg)
+        data_recv = struct.unpack('!3H2IH13d6Id',msg)
         return data_recv
         
 

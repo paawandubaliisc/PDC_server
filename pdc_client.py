@@ -96,7 +96,7 @@ def start_sending(row, col, sheet1, client, logger, SERVER_ADDR, next_time):
         # print("type of data 6 is {}", type(data[6]))
         # print("type of data 7 is {}", type(data[7]))
         # data[1] = float(data[1])
-        msg = struct.pack('!3H2IH13d6Ii',
+        msg = struct.pack('!3H2IH13d6Id',
                             SYNC_DATA,
                             FRAME_SIZE,
                             ID_CODE,
@@ -132,7 +132,7 @@ def transmit_ON(file_name, sheet_name):
     print("end")
 
 
-curr_time = 1646323839533
+curr_time = 1646324738067
 transmit_ON(file_name = "fault_on_next_line", sheet_name = dict[local_ip])
 
 
