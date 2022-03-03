@@ -132,7 +132,7 @@ def transmit_ON(file_name, sheet_name):
     print("end")
 
 
-curr_time = 1646329014906
+curr_time = 1646329397901
 transmit_ON(file_name = "fault_on_next_line", sheet_name = dict[local_ip])
 
 

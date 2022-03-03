@@ -483,16 +483,19 @@ def sfva(ss8_dataset, ss26_dataset, ss17_dataset,
     ia_2_38_ic = ia6538_2 + ia3738_2
     ia_0_38_ic = ia6538_0 + ia3738_0
 
-    ##### ia38 and va38 calculation
-    ia_38_ic = ia_1_38_ic + ia_2_38_ic + ia_0_38_ic
-    va38 = va38_1 + va38_2 + va38_0; 
+    
+    for i in range(5):
+        ##### ia38 and va38 calculation
+        ia_38_ic = ia_1_38_ic + ia_2_38_ic + ia_0_38_ic
+        va38 = va38_1 + va38_2 + va38_0; 
 
-    ##### impedance calculation
-    z38 = va38/((ia_38_ic + 1.6893*ia_0_38_ic)*Zc1_3830)
-    dist_38 = (1/g1_3830)*cmath.atanh(z38)
-    zberg_38 = z1_3830*zbase*dist_38
-    zline = z1_3830*zbase*L
-    fault_dist_from_38  = (((zberg_38).imag)/((zline).imag))*100
+
+        ##### impedance calculation
+        z38 = va38/((ia_38_ic + 1.6893*ia_0_38_ic)*Zc1_3830)
+        dist_38 = (1/g1_3830)*cmath.atanh(z38)
+        zberg_38 = z1_3830*zbase*dist_38
+        zline = z1_3830*zbase*L
+        fault_dist_from_38  = (((zberg_38).imag)/((zline).imag))*100
 
     t5 = time.perf_counter_ns()
     
