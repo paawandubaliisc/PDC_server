@@ -41,7 +41,7 @@ dict = {'10.64.37.31' : 'Bus 08',
 
 def open_workbook(file_name, sheet_name):
     print(file_name, sheet_name)
-    workbook = openpyxl.load_workbook("{}.xls".format(file_name))
+    workbook = openpyxl.load_workbook("{}.xlsx".format(file_name))
     sheet1 = workbook['{}'.format(sheet_name)]
     row = sheet1.max_row
     col = sheet1.max_column
@@ -124,7 +124,7 @@ def transmit_ON(file_name, sheet_name):
     print("end")
 
 
-curr_time = 1646314993679
+curr_time = 1646316012777
 transmit_ON(file_name = "fault_on_next_line", sheet_name = dict[local_ip])
 
 
