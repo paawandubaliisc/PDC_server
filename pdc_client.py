@@ -123,7 +123,7 @@ def start_sending(row, col, sheet1, client, logger, SERVER_ADDR, next_time):
                 time.sleep(0.001)
 
 def transmit_ON(file_name, sheet_name):
-    
+    print("Sheet name is : {}".format(sheet_name))
     SERVER_ADDR, client, BUFFER = start_server("10.64.37.35", 2345)
     row, col, sheet1 = open_workbook(file_name, sheet_name)
     logger = create_log(SERVER_ADDR)
@@ -132,7 +132,7 @@ def transmit_ON(file_name, sheet_name):
     print("end")
 
 
-curr_time = 1646320197304
+curr_time = 1646320688921
 transmit_ON(file_name = "fault_on_next_line", sheet_name = dict[local_ip])
 
 
