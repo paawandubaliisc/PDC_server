@@ -90,3 +90,19 @@ for i in range(2,row):
             data = sheet1.cell(i,j).value
             print("row: {}, col: {}, value:{}".format(i,j,data))
 '''
+
+import socket
+
+# socket = socket.gethostbyname(socket.gethostname())
+# print(socket)
+socket = "10.64.37.32"
+dict = {'10.64.37.31' : 'Bus 08',
+        '10.64.37.32' : 'Bus 26',
+        '10.64.37.33' : 'Bus 17',
+        '10.64.37.34' : 'Bus 30',
+        '10.64.37.35' : 'pdc',
+        '10.64.37.36' : 'Bus 38',
+        '10.64.37.37' : 'Bus 37',
+        '10.64.37.38' : 'Bus 65'}
+
+print(dict[socket])

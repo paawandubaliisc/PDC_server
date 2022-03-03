@@ -25,6 +25,18 @@ ANALOG3 = 0xDCBADCBA
 ANALOG4 = 0xDCBADCBA
 DIGITAL = 0xABCD
 
+local_ip = socket.gethostbyname(socket.gethostname())
+
+dict = {'10.64.37.31' : 'Bus 08',
+        '10.64.37.32' : 'Bus 26',
+        '10.64.37.33' : 'Bus 17',
+        '10.64.37.34' : 'Bus 30',
+        '10.64.37.35' : 'pdc',
+        '10.64.37.36' : 'Bus 38',
+        '10.64.37.37' : 'Bus 37',
+        '10.64.37.38' : 'Bus 65'}
+
+
 
 
 def open_workbook(file_name, sheet_name):
@@ -112,8 +124,8 @@ def transmit_ON(file_name, sheet_name):
     print("end")
 
 
-curr_time = 1645042466295
-transmit_ON(file_name = "Test1", sheet_name = "testdb")
+curr_time = 1646314514186
+transmit_ON(file_name = "fault_on_next_line", sheet_name = dict[local_ip])
 
 
 '''
