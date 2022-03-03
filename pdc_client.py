@@ -26,7 +26,7 @@ ANALOG4 = 0xDCBADCBA
 DIGITAL = 0xABCD
 
 local_ip = socket.gethostbyname(socket.gethostname())
-
+# local_ip = "10.64.37.31"
 dict = {'10.64.37.31' : 'Bus 08',
         '10.64.37.32' : 'Bus 26',
         '10.64.37.33' : 'Bus 17',
@@ -85,10 +85,18 @@ def create_log(SERVER):
 def start_sending(row, col, sheet1, client, logger, SERVER_ADDR, next_time):
     data = [0]*15
     for i in range(2,row):
-        for j in range(1, 14):
+        for j in range(1, col + 1):
             data[j] = sheet1.cell(i,j).value
         SOC_CLIENT, FRACSEC_CLIENT = current_time()
-        msg = struct.pack('!3H2IH13d6Id',
+        # print("type of data 1 is {}", type(data[1]))
+        # print("type of data 2 is {}", type(data[2]))
+        # print("type of data 3 is {}", type(data[3]))
+        # print("type of data 3 is {}", type(data[4]))
+        # print("type of data 5 is {}", type(data[5]))
+        # print("type of data 6 is {}", type(data[6]))
+        # print("type of data 7 is {}", type(data[7]))
+        # data[1] = float(data[1])
+        msg = struct.pack('!3H2IH13d6Ii',
                             SYNC_DATA,
                             FRAME_SIZE,
                             ID_CODE,
@@ -124,7 +132,7 @@ def transmit_ON(file_name, sheet_name):
     print("end")
 
 
-curr_time = 1646316259294
+curr_time = 1646317714483
 transmit_ON(file_name = "fault_on_next_line", sheet_name = dict[local_ip])
 
 
