@@ -155,7 +155,7 @@ def sfva(ss8_dataset, ss26_dataset, ss17_dataset,
          ss30_dataset, ss38_dataset, ss37_dataset,
          ss65_dataset):
 
-    t3 = time.perf_counter_ns()
+    t1 = time.perf_counter_ns()
     
     ####################bus 26 data
     data26 = ss26_dataset
@@ -390,7 +390,10 @@ def sfva(ss8_dataset, ss26_dataset, ss17_dataset,
     va65_2 = complex(va65_2_re, va65_2_im)
     va65_0 = complex(va65_0_re, va65_0_im)
 
+    t2 = time.perf_counter_ns()
+
     ############### FDA execution
+
 
     bus_dict = {
                 va26_1_mag : 'Bus 26',
@@ -412,25 +415,22 @@ def sfva(ss8_dataset, ss26_dataset, ss17_dataset,
                        va65_1_mag  
                     ]
     
-    eligible_relays = 28
-    for relay_count in range(eligible_relays):
-        fault_count = 0
-        
-        for i in pos_mag_bus_vol:
-            if i < 0.95:
-                fault_count = fault_count + 1
-                if relay_count == 27:
-                    print("Fault detected at {}". format(bus_dict[i]))
-        
-        if fault_count > 4:
-            if relay_count == 27:
-                print("Fault observed by {} buses. Hence, FDA votes 1".format(fault_count))
-                FDA = 1
-        else:
-            if relay_count == 27:
-                print("Fault observed by {} buses. Hence, FDA votes 0".format(fault_count))
-                FDA = 0
+    
+    fault_count = 0
+    
+    for i in pos_mag_bus_vol:
+        if i < 0.95:
+            fault_count = fault_count + 1
+            print("Fault detected at {}". format(bus_dict[i]))
+    
+    if fault_count > 4:
+        print("Fault observed by {} buses. Hence, FDA votes 1".format(fault_count))
+        FDA = 1
+    else:
+        print("Fault observed by {} buses. Hence, FDA votes 0".format(fault_count))
+        FDA = 0
 
+    t3 = time.perf_counter_ns()
 
     ############### FCA execution
     #%%%%%%%%%%%%%% current calculation 17 to 30 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -484,7 +484,8 @@ def sfva(ss8_dataset, ss26_dataset, ss17_dataset,
     ia_0_38_ic = ia6538_0 + ia3738_0
 
     
-    t2 = time.perf_counter_ns()
+    t4 = time.perf_counter_ns()
+
     ##### ia38 and va38 calculation
     ia_38_ic = ia_1_38_ic + ia_2_38_ic + ia_0_38_ic
     va38 = va38_1 + va38_2 + va38_0; 
@@ -499,7 +500,13 @@ def sfva(ss8_dataset, ss26_dataset, ss17_dataset,
 
     t5 = time.perf_counter_ns()
     
-    exec_time = (t2 - t3) + 6*(t5-t2)
+
+
+    exec_time = (t2 - t1) + 27*(t3-t2) + (t4 - t3) + 6*(t5-t4)
     print("Fault distance from bus 30: {}".format(fault_dist_from_30))
     print("Fault distance from bus 38: {}".format(fault_dist_from_38))
+    print("Voltage read time from memory: {}".format(t2-t1))
+    print("FDA execution time: {}".format(27*(t3-t2)))
+    print("Current estimation time: {}".format(t4-t3))
+    print("FCA execution time: {}".format(6*(t5-t4)))    
     print("Total execution time in nanosec: {}".format(exec_time))
