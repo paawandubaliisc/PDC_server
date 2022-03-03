@@ -159,6 +159,7 @@ def sfva(ss8_dataset, ss26_dataset, ss17_dataset,
     
     ####################bus 26 data
     data26 = ss26_dataset[3]
+    print("data26 is: {}".format(data26))
     va26_1_re = data26[3]
     va26_1_im = data26[4]
     va26_2_re = data26[5]
@@ -180,6 +181,7 @@ def sfva(ss8_dataset, ss26_dataset, ss17_dataset,
 
     ##################### bus 30 data
     data30 = ss30_dataset[3]
+    print("data30 is: {}".format(data30))
     va30_1_re = data30[3]
     va30_1_im = data30[4]
     va30_2_re = data30[5]
@@ -204,6 +206,7 @@ def sfva(ss8_dataset, ss26_dataset, ss17_dataset,
 
     ######################## bus 08 data
     data8 = ss8_dataset[3]
+    print("data8 is: {}".format(data8))
     va08_1_re = data8[3]
     va08_1_im = data8[4]
     va08_2_re = data8[5]
@@ -226,6 +229,7 @@ def sfva(ss8_dataset, ss26_dataset, ss17_dataset,
 
     ######################## bus 17 data
     data17 = ss17_dataset[3]
+    print("data17 is: {}".format(data17))
     va17_1_re = data17[3]
     va17_1_im = data17[4]
     va17_2_re = data17[5]
@@ -251,6 +255,7 @@ def sfva(ss8_dataset, ss26_dataset, ss17_dataset,
     #%0.54,-22.3502138188,-65.5284514209,1.53422418138,8.12634746772,7.44847631993,14.4354755641
 
     data37 = ss37_dataset[3]
+    print("data37 is: {}".format(data37))
     va37_1_re = data37[3]
     va37_1_im = data37[4]
     va37_2_re = data37[5]
@@ -274,6 +279,7 @@ def sfva(ss8_dataset, ss26_dataset, ss17_dataset,
     # %0.54,-51.5261770653,-153.222847839,3.49461091354,23.1938291241,17.8841457017,39.3614296488
 
     data38 = ss38_dataset[3]
+    print("data38 is: {}".format(data38))
     va38_1_re = data38[3]
     va38_1_im = data38[4]
     va38_2_re = data38[5]
@@ -298,6 +304,7 @@ def sfva(ss8_dataset, ss26_dataset, ss17_dataset,
     # %0.54,-16.1225787535,-191.962668361,0.200981046269,4.77625827918,-0.827590499322,3.07543614249
 
     data65 = ss65_dataset[3]
+    print("data65 is: {}".format(data65))
     va65_1_re = data65[3]
     va65_1_im = data65[4]
     va65_2_re = data65[5]
