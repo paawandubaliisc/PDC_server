@@ -158,15 +158,23 @@ def sfva(ss8_dataset, ss26_dataset, ss17_dataset,
     t3 = time.perf_counter_ns()
     
     ####################bus 26 data
-    data26 = ss26_dataset[3]
+    data26 = ss26_dataset
     print("data26 is: {}".format(data26))
-    va26_1_re = data26[3]
-    va26_1_im = data26[4]
-    va26_2_re = data26[5]
-    va26_2_im = data26[6]
-    va26_0_re = data26[7]
-    va26_0_im = data26[8]
+    va26_1_re = data26[7]
+    va26_1_im = data26[8]
+    va26_2_re = data26[9]
+    va26_2_im = data26[10]
+    va26_0_re = data26[11]
+    va26_0_im = data26[12]
 
+    # data26 = ss26_dataset[3]
+    # print("data26 is: {}".format(data26))
+    # va26_1_re = data26[3]
+    # va26_1_im = data26[4]
+    # va26_2_re = data26[5]
+    # va26_2_im = data26[6]
+    # va26_0_re = data26[7]
+    # va26_0_im = data26[8]
     # va26_1_re = -78.1044890236
     # va26_1_im = -151.493586093
     # va26_2_re = 4.35542605871
@@ -180,15 +188,23 @@ def sfva(ss8_dataset, ss26_dataset, ss17_dataset,
     va26_0 = complex(va26_0_re,va26_0_im)
 
     ##################### bus 30 data
-    data30 = ss30_dataset[3]
+    data30 = ss30_dataset
     print("data30 is: {}".format(data30))
-    va30_1_re = data30[3]
-    va30_1_im = data30[4]
-    va30_2_re = data30[5]
-    va30_2_im = data30[6]
-    va30_0_re = data30[7]
-    va30_0_im = data30[8]
+    va30_1_re = data30[7]
+    va30_1_im = data30[8]
+    va30_2_re = data30[9]
+    va30_2_im = data30[10]
+    va30_0_re = data30[11]
+    va30_0_im = data30[12]
 
+    # data30 = ss30_dataset[3]
+    # print("data30 is: {}".format(data30))
+    # va30_1_re = data30[3]
+    # va30_1_im = data30[4]
+    # va30_2_re = data30[5]
+    # va30_2_im = data30[6]
+    # va30_0_re = data30[7]
+    # va30_0_im = data30[8]
 
     # va30_1_re = -75.8693271986
     # va30_1_im = -137.323010883
@@ -205,15 +221,23 @@ def sfva(ss8_dataset, ss26_dataset, ss17_dataset,
     va30 = va30_1 + va30_2 + va30_0
 
     ######################## bus 08 data
-    data8 = ss8_dataset[3]
+    data8 = ss8_dataset
     print("data8 is: {}".format(data8))
-    va08_1_re = data8[3]
-    va08_1_im = data8[4]
-    va08_2_re = data8[5]
-    va08_2_im = data8[6]
-    va08_0_re = data8[7]
-    va08_0_im = data8[8]
+    va08_1_re = data8[7]
+    va08_1_im = data8[8]
+    va08_2_re = data8[9]
+    va08_2_im = data8[10]
+    va08_0_re = data8[11]
+    va08_0_im = data8[12]
 
+    # data8 = ss8_dataset[3]
+    # print("data8 is: {}".format(data8))
+    # va08_1_re = data8[3]
+    # va08_1_im = data8[4]
+    # va08_2_re = data8[5]
+    # va08_2_im = data8[6]
+    # va08_0_re = data8[7]
+    # va08_0_im = data8[8]
 
     # va08_1_re = -86.7108142611
     # va08_1_im = -133.498889352
@@ -228,14 +252,23 @@ def sfva(ss8_dataset, ss26_dataset, ss17_dataset,
     va08_0 = complex(va08_0_re,va08_0_im)
 
     ######################## bus 17 data
-    data17 = ss17_dataset[3]
+    data17 = ss17_dataset
     print("data17 is: {}".format(data17))
-    va17_1_re = data17[3]
-    va17_1_im = data17[4]
-    va17_2_re = data17[5]
-    va17_2_im = data17[6]
-    va17_0_re = data17[7]
-    va17_0_im = data17[8]
+    va17_1_re = data17[7]
+    va17_1_im = data17[8]
+    va17_2_re = data17[9]
+    va17_2_im = data17[10]
+    va17_0_re = data17[11]
+    va17_0_im = data17[12]
+
+    # data17 = ss17_dataset[3]
+    # print("data17 is: {}".format(data17))
+    # va17_1_re = data17[3]
+    # va17_1_im = data17[4]
+    # va17_2_re = data17[5]
+    # va17_2_im = data17[6]
+    # va17_0_re = data17[7]
+    # va17_0_im = data17[8]
 
     # va17_1_re = -32.1604343812
     # va17_1_im = -58.3697997785
@@ -254,14 +287,23 @@ def sfva(ss8_dataset, ss26_dataset, ss17_dataset,
     #%%%%%%%% bus 37 voltage 
     #%0.54,-22.3502138188,-65.5284514209,1.53422418138,8.12634746772,7.44847631993,14.4354755641
 
-    data37 = ss37_dataset[3]
+    data37 = ss37_dataset
     print("data37 is: {}".format(data37))
-    va37_1_re = data37[3]
-    va37_1_im = data37[4]
-    va37_2_re = data37[5]
-    va37_2_im = data37[6]
-    va37_0_re = data37[7]
-    va37_0_im = data37[8]
+    va37_1_re = data37[7]
+    va37_1_im = data37[8]
+    va37_2_re = data37[9]
+    va37_2_im = data37[10]
+    va37_0_re = data37[11]
+    va37_0_im = data37[12]
+
+    # data37 = ss37_dataset[3]
+    # print("data37 is: {}".format(data37))
+    # va37_1_re = data37[3]
+    # va37_1_im = data37[4]
+    # va37_2_re = data37[5]
+    # va37_2_im = data37[6]
+    # va37_0_re = data37[7]
+    # va37_0_im = data37[8]
 
     # va37_1_re = -22.019240975
     # va37_1_im = -67.0119480817
@@ -278,14 +320,23 @@ def sfva(ss8_dataset, ss26_dataset, ss17_dataset,
     # %%%%%%% bus 38 voltage
     # %0.54,-51.5261770653,-153.222847839,3.49461091354,23.1938291241,17.8841457017,39.3614296488
 
-    data38 = ss38_dataset[3]
+    data38 = ss38_dataset
     print("data38 is: {}".format(data38))
-    va38_1_re = data38[3]
-    va38_1_im = data38[4]
-    va38_2_re = data38[5]
-    va38_2_im = data38[6]
-    va38_0_re = data38[7]
-    va38_0_im = data38[8]
+    va38_1_re = data38[7]
+    va38_1_im = data38[8]
+    va38_2_re = data38[9]
+    va38_2_im = data38[10]
+    va38_0_re = data38[11]
+    va38_0_im = data38[12]
+
+    # data38 = ss38_dataset[3]
+    # print("data38 is: {}".format(data38))
+    # va38_1_re = data38[3]
+    # va38_1_im = data38[4]
+    # va38_2_re = data38[5]
+    # va38_2_im = data38[6]
+    # va38_0_re = data38[7]
+    # va38_0_im = data38[8]
 
     # va38_1_re = -45.2195260092
     # va38_1_im = -152.322880038
@@ -303,14 +354,23 @@ def sfva(ss8_dataset, ss26_dataset, ss17_dataset,
     # %%%%%%% bus 65 voltage
     # %0.54,-16.1225787535,-191.962668361,0.200981046269,4.77625827918,-0.827590499322,3.07543614249
 
-    data65 = ss65_dataset[3]
+    data65 = ss65_dataset
     print("data65 is: {}".format(data65))
-    va65_1_re = data65[3]
-    va65_1_im = data65[4]
-    va65_2_re = data65[5]
-    va65_2_im = data65[6]
-    va65_0_re = data65[7]
-    va65_0_im = data65[8]
+    va65_1_re = data65[7]
+    va65_1_im = data65[8]
+    va65_2_re = data65[9]
+    va65_2_im = data65[10]
+    va65_0_re = data65[11]
+    va65_0_im = data65[12]
+
+    # data65 = ss65_dataset[3]
+    # print("data65 is: {}".format(data65))
+    # va65_1_re = data65[3]
+    # va65_1_im = data65[4]
+    # va65_2_re = data65[5]
+    # va65_2_im = data65[6]
+    # va65_0_re = data65[7]
+    # va65_0_im = data65[8]
 
     # va65_1_re = -16.4416491016
     # va65_1_im = -191.876483156
