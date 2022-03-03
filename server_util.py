@@ -248,6 +248,7 @@ class server:
                 if BFI == 1:
                     print("BFI Received\n")
                     print("Triggered SFVA")
+                    self.ss8_queue.show()
                     (ss8_dataset, ss26_dataset, ss17_dataset,
                     ss30_dataset, ss38_dataset, ss37_dataset,
                     ss65_dataset) = self.sfva_enqueue()
