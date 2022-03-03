@@ -85,7 +85,7 @@ def create_log(SERVER):
 def start_sending(row, col, sheet1, client, logger, SERVER_ADDR, next_time):
     data = [0]*15
     for i in range(2,row):
-        for j in range(1, col + 1):
+        for j in range(1, 14):
             data[j] = sheet1.cell(i,j).value
         SOC_CLIENT, FRACSEC_CLIENT = current_time()
         msg = struct.pack('!3H2IH13d6Id',
@@ -124,7 +124,7 @@ def transmit_ON(file_name, sheet_name):
     print("end")
 
 
-curr_time = 1646316012777
+curr_time = 1646316259294
 transmit_ON(file_name = "fault_on_next_line", sheet_name = dict[local_ip])
 
 
