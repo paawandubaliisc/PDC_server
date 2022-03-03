@@ -421,13 +421,13 @@ def sfva(ss8_dataset, ss26_dataset, ss17_dataset,
     for i in pos_mag_bus_vol:
         if i < 0.95:
             fault_count = fault_count + 1
-            print("Fault detected at {}". format(bus_dict[i]))
+            # print("Fault detected at {}". format(bus_dict[i]))
     
     if fault_count > 4:
-        print("Fault observed by {} buses. Hence, FDA votes 1".format(fault_count))
+        # print("Fault observed by {} buses. Hence, FDA votes 1".format(fault_count))
         FDA = 1
     else:
-        print("Fault observed by {} buses. Hence, FDA votes 0".format(fault_count))
+        # print("Fault observed by {} buses. Hence, FDA votes 0".format(fault_count))
         FDA = 0
 
     t3 = time.perf_counter_ns()
