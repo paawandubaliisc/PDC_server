@@ -242,7 +242,7 @@ class server:
             sender = self.dict[cl_addr[0]]
             CLIENT_TIME = data_recv[6]    
             queue_set = [data_recv[7], data_recv[8], data_recv[9], data_recv[10], data_recv[11], data_recv[12]]
-            print("Data, Sender: {}, client time: {}, server time: {}".format(sender, CLIENT_TIME, MILSEC_SERVER))
+            # print("Data, Sender: {}, client time: {}, server time: {}".format(sender, CLIENT_TIME, MILSEC_SERVER))
             # print(queue_set)
             self.switch(sender, queue_set)
             msg_count = msg_count + 1
@@ -260,9 +260,11 @@ class server:
                     ss65_dataset)
                     
                     avg_exec_time = sum(exec_time_array)/len(exec_time_array)
-                    
+                    max_exec_time = max(exec_time_array)
+                    print("Average exec time: {}".format(avg_exec_time))
+                    print("Maximum exec time: {}".format(max_exec_time))
 
-                print("Data set received\n\n\n")
+                print("Data set received for time: {}\n\n\n".format(CLIENT_TIME))
                 
             ################################################
     
