@@ -500,8 +500,6 @@ def sfva(ss8_dataset, ss26_dataset, ss17_dataset,
 
     t5 = time.perf_counter_ns()
     
-
-
     exec_time = (t2 - t1) + 27*(t3-t2) + (t4 - t3) + 6*(t5-t4)
     print("Fault distance from bus 30: {}".format(fault_dist_from_30))
     print("Fault distance from bus 38: {}".format(fault_dist_from_38))
