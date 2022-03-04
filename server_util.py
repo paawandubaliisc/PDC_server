@@ -236,7 +236,9 @@ class server:
             # print("data_recv[24]: {}".format(data_recv[24]))
             # print("data_recv[25]: {}\n".format(data_recv[25]))
             if data_recv[25] == 1: 
-                BFI = 1 
+                BFI = 1
+            else: 
+                BFI = 0  
             sender = self.dict[cl_addr[0]]
             CLIENT_TIME = data_recv[6]    
             queue_set = [data_recv[7], data_recv[8], data_recv[9], data_recv[10], data_recv[11], data_recv[12]]
