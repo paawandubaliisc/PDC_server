@@ -255,10 +255,11 @@ class server:
                     ss30_dataset, ss38_dataset, ss37_dataset,
                     ss65_dataset) = self.sfva_enqueue()
 
-                    sfva(ss8_dataset, ss26_dataset, ss17_dataset,
+                    exec_time_array = sfva(ss8_dataset, ss26_dataset, ss17_dataset,
                     ss30_dataset, ss38_dataset, ss37_dataset,
                     ss65_dataset)
                     
+                    avg_exec_time = sum(exec_time_array)/len(exec_time_array)
                     
 
                 print("Data set received\n\n\n")
@@ -299,9 +300,6 @@ class server:
                 self.client.write_to_db(json)
 
 
-
-
-
     def sfva_enqueue(self):
 
         ss8_dataset = self.ss8_queue.dequeue()
@@ -338,35 +336,35 @@ class server:
 
     def ss8_func(self, queue_set):
         self.ss8_queue.enqueue(queue_set)
-        print("ss8 queued")
+        # print("ss8 queued")
 
     def ss26_func(self, queue_set):
         self.ss26_queue.enqueue(queue_set)
-        print("ss26 queued")
+        # print("ss26 queued")
 
     def ss17_func(self, queue_set):
         self.ss17_queue.enqueue(queue_set)
-        print("ss17 queued")
+        # print("ss17 queued")
 
     def ss30_func(self, queue_set):
         self.ss30_queue.enqueue(queue_set)
-        print("ss30 queued")
+        # print("ss30 queued")
 
     def ss38_func(self, queue_set):
         self.ss38_queue.enqueue(queue_set)
-        print("ss38 queued")
+        # print("ss38 queued")
 
     def ss37_func(self, queue_set):
         self.ss37_queue.enqueue(queue_set)
-        print("ss37 queued")
+        # print("ss37 queued")
 
     def ss65_func(self, queue_set):
         self.ss65_queue.enqueue(queue_set)
-        print("ss65 queued")
+        # print("ss65 queued")
 
     def pdc_func(self, queue_set):
         self.pdc_queue.enqueue(queue_set)
-        print("pdc queued")
+        # print("pdc queued")
 
     def current_time(self):
         CT = time.time()

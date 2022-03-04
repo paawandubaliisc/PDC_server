@@ -1,6 +1,10 @@
 import time
 import cmath
 
+######################## execution time array
+
+exec_time_array = []
+
 ######################## general parameters
 kv_base = 345
 mva_base = 100
@@ -501,6 +505,8 @@ def sfva(ss8_dataset, ss26_dataset, ss17_dataset,
     t5 = time.perf_counter_ns()
     
     exec_time = (t2 - t1) + 27*(t3-t2) + (t4 - t3) + 6*(t5-t4)
+    
+    exec_time_array.append(exec_time)
     print("Fault distance from bus 30: {}".format(fault_dist_from_30))
     print("Fault distance from bus 38: {}".format(fault_dist_from_38))
     print("Voltage read time from memory: {}".format(t2-t1))
@@ -508,3 +514,5 @@ def sfva(ss8_dataset, ss26_dataset, ss17_dataset,
     print("Current estimation time: {}".format(t4-t3))
     print("FCA execution time: {}".format(6*(t5-t4)))    
     print("Total execution time in nanosec: {}".format(exec_time))
+
+    return exec_time_array
