@@ -86,7 +86,7 @@ def create_log(SERVER):
 def start_sending(row, col, sheet1, client, logger, SERVER_ADDR, next_time):
     data = [0]*15
     for i in range(2,row):
-        for j in range(1, col):
+        for j in range(1, (col+1)):
             data[j] = sheet1.cell(i,j).value
         SOC_CLIENT, FRACSEC_CLIENT = current_time()
         # print("type of data 1 is {}", type(data[1]))
