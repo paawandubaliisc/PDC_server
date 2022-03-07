@@ -289,7 +289,7 @@ def sfva(ss8_dataset, ss26_dataset, ss17_dataset,
 
 
     va17_1 = complex(va17_1_re,va17_1_im)*(345/143.52)
-    va17_1_mag = abs(va17_1)/79.67433
+    va17_1_mag = abs(va17_1)/199.18584
     va17_2 = complex(va17_2_re,va17_2_im)*(345/143.52)
     va17_0 = complex(va17_0_re,va17_0_im)*(345/143.52)
 
@@ -323,7 +323,7 @@ def sfva(ss8_dataset, ss26_dataset, ss17_dataset,
     # va37_0_im = 11.5209101607
 
     va37_1 = complex(va37_1_re,va37_1_im)*(345/142.83)
-    va37_1_mag = abs(va37_1)/79.67433
+    va37_1_mag = abs(va37_1)/199.18584
     va37_2 = complex(va37_2_re,va37_2_im)*(345/142.83)
     va37_0 = complex(va37_0_re,va37_0_im)*(345/142.83)
 
