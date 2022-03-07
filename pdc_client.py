@@ -25,8 +25,8 @@ ANALOG3 = 0xDCBADCBA
 ANALOG4 = 0xDCBADCBA
 DIGITAL = 0xABCD
 
-# local_ip = socket.gethostbyname(socket.gethostname())
-local_ip = "10.64.37.32"
+local_ip = socket.gethostbyname(socket.gethostname())
+# local_ip = "10.64.37.32"
 dict = {'10.64.37.31' : 's1',
         '10.64.37.32' : 's2',
         '10.64.37.33' : 's3',
@@ -133,7 +133,7 @@ def transmit_ON(file_name, sheet_name):
     print("end")
 
 
-curr_time = 1646635386874
+curr_time = 1646635473025
 transmit_ON(file_name = "fault_on_previous_line", sheet_name = dict[local_ip])
 
 
