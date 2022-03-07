@@ -261,9 +261,12 @@ class server:
                     
                     avg_exec_time = sum(exec_time_array)/len(exec_time_array)
                     max_exec_time = max(exec_time_array)
+                    min_exec_time = min(exec_time_array)
                     max_exec_time_index = exec_time_array.index(max_exec_time)
+                    min_exec_time_index = exec_time_array.index(min_exec_time)
                     print("Average exec time: {}".format(avg_exec_time))
                     print("Maximum exec time: {} for client time {}".format(max_exec_time, (max_exec_time_index*0.02 + 2)))
+                    print("Minimum exec time: {} for client time {}".format(min_exec_time, (min_exec_time_index*0.02 + 2)))
 
                 print("Data set received for time: {}\n".format(CLIENT_TIME))
                 
