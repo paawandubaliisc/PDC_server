@@ -27,14 +27,14 @@ DIGITAL = 0xABCD
 
 # local_ip = socket.gethostbyname(socket.gethostname())
 local_ip = "10.64.37.32"
-dict = {'10.64.37.31' : 'Bus_08',
-        '10.64.37.32' : 'Bus_26',
-        '10.64.37.33' : 'Bus_17',
-        '10.64.37.34' : 'Bus_30',
+dict = {'10.64.37.31' : 's1',
+        '10.64.37.32' : 's2',
+        '10.64.37.33' : 's3',
+        '10.64.37.34' : 's4',
         '10.64.37.35' : 'pdc',
-        '10.64.37.36' : 'Bus_38',
-        '10.64.37.37' : 'Bus_37',
-        '10.64.37.38' : 'Bus_65'}
+        '10.64.37.36' : 's5',
+        '10.64.37.37' : 's6',
+        '10.64.37.38' : 's7'}
 
 print(dict[local_ip])
 
@@ -133,7 +133,7 @@ def transmit_ON(file_name, sheet_name):
     print("end")
 
 
-curr_time = 1646633539679
+curr_time = 1646634524600
 transmit_ON(file_name = "fault_on_previous_line", sheet_name = dict[local_ip])
 
 
