@@ -504,7 +504,7 @@ def sfva(ss8_dataset, ss26_dataset, ss17_dataset,
 
     t5 = time.perf_counter_ns()
     
-    exec_time = (t2 - t1) + 27*(t3-t2) + FDA*((t4 - t3) + 6*(t5-t4))
+    exec_time = (t2 - t1) + 27*(t3-t2) + ((t4 - t3) + 6*(t5-t4))
     
     exec_time_array.append(exec_time)
     print("FDA = {}".format(FDA))
@@ -515,5 +515,12 @@ def sfva(ss8_dataset, ss26_dataset, ss17_dataset,
     print("Current estimation time: {}".format(t4-t3))
     print("FCA execution time: {}".format(6*(t5-t4)))    
     print("Total execution time in nanosec: {}".format(exec_time))
+    print("Bus 08 pos mag = {}".format(va08_1_mag))
+    print("Bus 17 pos mag = {}".format(va17_1_mag))
+    print("Bus 26 pos mag = {}".format(va26_1_mag))
+    print("Bus 30 pos mag = {}".format(va30_1_mag))
+    print("Bus 37 pos mag = {}".format(va37_1_mag))
+    print("Bus 38 pos mag = {}".format(va38_1_mag))
+    print("Bus 65 pos mag = {}".format(va65_1_mag))
 
     return exec_time_array
