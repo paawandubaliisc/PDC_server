@@ -507,6 +507,7 @@ def sfva(ss8_dataset, ss26_dataset, ss17_dataset,
     exec_time = (t2 - t1) + 27*(t3-t2) + (t4 - t3) + 6*(t5-t4)
     
     exec_time_array.append(exec_time)
+    print("FDA = {}".format(FDA))
     print("Fault distance from bus 30: {}".format(fault_dist_from_30))
     print("Fault distance from bus 38: {}".format(fault_dist_from_38))
     print("Voltage read time from memory: {}".format(t2-t1))
