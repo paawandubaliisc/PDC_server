@@ -504,7 +504,7 @@ def sfva(ss8_dataset, ss26_dataset, ss17_dataset,
 
     t5 = time.perf_counter_ns()
     
-    exec_time = (t2 - t1) + 27*(t3-t2) + (t4 - t3) + 6*(t5-t4)
+    exec_time = (t2 - t1) + 27*(t3-t2) + FDA*((t4 - t3) + 6*(t5-t4))
     
     exec_time_array.append(exec_time)
     print("FDA = {}".format(FDA))
